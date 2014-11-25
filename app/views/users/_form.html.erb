@@ -1,0 +1,28 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>User can't be created because</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form action="<%= users_url %>" method="post">
+
+  <input type="hidden" 
+  name="authenticity_token" 
+  value="<%=form_authenticity_token%>">
+
+  <label>Username<br>
+    <input type="text" name="user[username]"><br>
+  </label>
+
+  <label>Password<br>
+    <input type="password" name="user[password]"><br>
+  </label>
+
+  <input type="submit" value='Sign In'>
+
+</form>
