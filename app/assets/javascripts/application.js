@@ -12,13 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.serializejson
+//= require jquery.serializeJSON
 //= require underscore
 //= require backbone
 //= require bootstrap
 //= require billmo
 //= require_tree ../templates
-//= require_tree ./utils
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

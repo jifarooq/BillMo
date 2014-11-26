@@ -1,7 +1,7 @@
-<h2>All the bills</h2>
+<h2>All the transactions</h2>
 
-<% bills.each(function(bill) { %>
-	<li> <%= bill.escape('amount') %>
-		for <%= bill.escape('note') %>
+<% transactions.each(function(trans) { %>
+	<li> <%= trans.escape('amount') %>
+		for <%= trans.escape('note') %>
 	</li>
 <% }); %>

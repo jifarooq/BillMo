@@ -1,5 +1,5 @@
 BillMo.Collections.Bills = Backbone.Collection.extend({
-	urlRoot: 'api/bills',
-  model: BillMo.Models.Bill,
+	urlRoot: 'api/transactions',
+  model: BillMo.Models.Transaction,
 
 });

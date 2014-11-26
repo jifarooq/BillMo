@@ -9,6 +9,7 @@
 #  gravatar_url    :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  balance         :float            default(1000.0)
 #
 
 class User < ActiveRecord::Base
@@ -18,7 +19,20 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6, allow_nil: true }
 	after_initialize :ensure_token
 
-	has_many :bills
+	has_many(
+		:paid_transactions, 
+		class_name: 'Transaction',
+		foreign_key: :payer_id
+	)
+
+	has_many(
+		:received_transactions, 
+		class_name: 'Transaction',
+		foreign_key: :receiver_id
+	)
+
+	has_many :friendships
+	has_many :friends, through: :friendships
 
 	def password=(password)
 		@password = password

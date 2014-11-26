@@ -1,4 +1,4 @@
-BillMo.Views.BillsIndex = Backbone.View.extend({
+BillMo.Views.TransactionsIndex = Backbone.View.extend({
   template: JST['bills/index'],
 
   initialize: function() {
@@ -6,7 +6,7 @@ BillMo.Views.BillsIndex = Backbone.View.extend({
   },
 
   render: function() {
-  	var content = this.template({ bills: this.collection });
+  	var content = this.template({ transactions: this.collection });
   	this.$el.html(content);
   	return this;
   },

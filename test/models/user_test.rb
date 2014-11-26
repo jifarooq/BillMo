@@ -9,6 +9,7 @@
 #  gravatar_url    :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  balance         :float            default(1000.0)
 #
 
 require 'test_helper'
