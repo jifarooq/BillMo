@@ -1,0 +1,43 @@
+#main {
+	width: 950px;
+	margin: 0 auto;
+	min-height: 500px;
+}
+
+.inner-mainbar {
+	width: 635px;
+}
+
+.pay-box {
+	border: 1px solid #bbb;
+	width: 625px;
+	height: 75px;
+	margin-bottom: 20px;
+	/*margin-left: 0px;*/
+}
+
+.news-feed {
+	border: 1px solid #bbb;
+	width: 625px;
+	height: 1000px;
+}
+
+.inner-sidebar {
+	width: 275px;
+	height: 400px;
+}
+
+.profile {
+	border: 1px solid #bbb;
+	width: 265px;
+	height: 140px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+}
+
+.friends {
+	border: 1px solid #bbb;
+	width: 265px;
+	height: 200px;
+	margin-left: 10px;
+}

@@ -5,6 +5,7 @@ BillMo.Routers.AppRouter = Backbone.Router.extend({
 	
 	initialize: function(options) {
 		this.$rootEl = options.$rootEl
+		this.transactions = Billmo.paid_transactions
 	},
 
 	index: function() {

@@ -1,0 +1,32 @@
+.app-title {
+	font-family: impact;
+	font-size: 40px;
+	color: white;
+}
+
+.container {
+	background-color: #3c95d2;
+	height: 50px;
+	width: 100%;
+	position: absolute;
+}
+
+.float-left {
+	float:left;
+	padding: 1%;
+}
+
+.float-right {
+	float:right;
+	padding: 1%;
+	/*color: white;*/
+	color: black;
+}
+
+.button {
+	color: black;
+}
+
+.light-gray {
+	color: #999;
+}

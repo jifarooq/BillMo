@@ -1,5 +1,5 @@
 BillMo.Views.TransactionsIndex = Backbone.View.extend({
-  template: JST['bills/index'],
+  template: JST['transactions/index'],
 
   initialize: function() {
   	this.listenTo(this.collection, 'sync', this.render)

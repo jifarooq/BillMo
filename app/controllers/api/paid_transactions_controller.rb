@@ -20,11 +20,6 @@ class Api::PaidTransactionsController < ApplicationController
 		render json: @paid_trans
 	end
 
-	def showReceived
-		@paid_trans = current_user.paid_transactions.find_by_payer_id(params[:id])
-		render json: @paid_trans
-	end
-
 	def destroy
 		@paid_trans = current_user.paid_transactions.find_by_payer_id(params[:id])
 		@paid_trans.try(:destroy)

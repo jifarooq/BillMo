@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container container-fluid">
+			<div class="header-spacing">
+				<div class="inner-header">
+						<span class="float-left app-title">BILLMO</span>
+
+						<span class="float-left">
+							<form method="GET" action="/search">
+								<input id="searchbox" value="Search someone" class='light-gray'autocomplete="on">
+							</form>
+						</span>
+			
+						<span class="float-right button">
+							<%= button_to 'Log Out', session_url, method: :delete %>
+						</span>
+						<span class="float-right">Account</span>
+						<span class="float-right">Help</span>
+						<span class="float-right"><%= current_user.username %></span>
+
+				</div> <!-- inner-header close -->
+			</div>
+	</div>
+</nav>

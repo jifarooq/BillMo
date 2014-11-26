@@ -9,8 +9,7 @@
 <body>
 
 <% if logged_in? %>
-	Hi there <%= current_user.username %>
-	<%= button_to 'Log Out', session_url, method: :delete %>
+	<%= render partial: 'layouts/header' %>
 <% end %>
 
 <%= yield %>
