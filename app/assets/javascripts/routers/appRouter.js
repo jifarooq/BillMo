@@ -14,8 +14,8 @@ BillMo.Routers.AppRouter = Backbone.Router.extend({
 			collection: this.transactions,
 			el: '.news-feed'
 		});
-		// this._swapView(view);
-		this.$rootEl.html(view.render().$el);
+		this._swapView(view);
+		// this.$rootEl.html(view.render().$el);
 	},
 
 	_swapView: function(view) {

@@ -1,7 +1,10 @@
 <h2>All the transactions</h2>
 
 <% transactions.each(function(trans) { %>
+
 	<li> <%= trans.escape('amount') %>
 		for <%= trans.escape('note') %>
 	</li>
 <% }); %>
+
+<!-- slider input type = range -->
