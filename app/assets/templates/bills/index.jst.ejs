@@ -1,0 +1,7 @@
+<h2>All the bills</h2>
+
+<% bills.each(function(bill) { %>
+	<li> <%= bill.escape('amount') %>
+		for <%= bill.escape('note') %>
+	</li>
+<% }); %>
