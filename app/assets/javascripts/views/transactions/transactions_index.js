@@ -6,10 +6,13 @@ BillMo.Views.TransactionsIndex = Backbone.View.extend({
   },
 
   render: function() {
-  	var content = this.template({ transactions: this.collection });
-  	this.$el.html(content);
+    // console.log(this.collection.length)
+    // debugger
+    if (this.collection.length > 0) {
+    	var content = this.template({ transactions: this.collection });
+    }
+  	this.$el.append(content);
   	return this;
   },
 
-  //destroy
 });

@@ -5,7 +5,7 @@ window.BillMo = {
   Routers: {},
   initialize: function() {
     // only need paid_transactions
-    Billmo.paid_transactions = new BillMo.Collections.Transactions();
+    paid_transactions = new BillMo.Collections.Transactions();
 
   	new BillMo.Routers.AppRouter({
       $rootEl: $("#main")
@@ -14,3 +14,5 @@ window.BillMo = {
   	Backbone.history.start();
   }
 };
+
+$(BillMo.initialize);
