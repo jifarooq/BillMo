@@ -2,13 +2,18 @@
 <button>Charge</button>
 
 <form>
+	<label><br>Amount
+		<input type='text' name='trans[receiver]' value=''>
+	</label>
+
 	<label>To:
 		<input type='text' name='trans[receiver]' value=''>
 	</label>
 
-	<input type='range' name='trans[amount]' value='100'>
+	<input type='range' name='trans[amount]' value='5000'
+	min='0' max='10000' step='100'>
 
 	<label>For
-	<textarea row='20' col='40'>ice cream</textarea>
+	<textarea rows='3' cols='50'>ice cream</textarea>
 	</label>
 </form>

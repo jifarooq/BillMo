@@ -2,9 +2,10 @@ class Api::PaidTransactionsController < ApplicationController
 
 	def create 
 		@paid_trans = current_user.paid_transactions.Transaction.new(trans_params)
+		current_user.balance -= @paid_trans.amount
 
 		if @paid_trans.save
-			current_user.balance -= @paid_trans.amount
+			# debugger
 			current_user.save
 			render json: @paid_trans
 		else

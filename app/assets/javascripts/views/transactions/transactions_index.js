@@ -1,7 +1,7 @@
 BillMo.Views.TransactionsIndex = Backbone.View.extend({
   template: JST['transactions/index'],
 
-  initialize: function() {
+  initialize: function(options) {
   	this.listenTo(this.collection, 'sync', this.render)
   },
 
@@ -9,7 +9,6 @@ BillMo.Views.TransactionsIndex = Backbone.View.extend({
     if (this.collection.length > 0) {
     	var content = this.template({ transactions: this.collection });
     }
-    debugger
     this.$el.append(content);
     this.addTransactionBox();
   	return this;
@@ -18,7 +17,7 @@ BillMo.Views.TransactionsIndex = Backbone.View.extend({
   addTransactionBox: function() {
     var transBox = new BillMo.Views.TransactionsBox({
       model: this.model,
-      el: '.pay_box'
+      // el: '.pay_box' don't do this
     });
     this.attachTransBox('.pay-box', transBox.render());
   },

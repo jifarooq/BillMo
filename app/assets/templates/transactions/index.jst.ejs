@@ -1,12 +1,22 @@
 <h2>All the transactions</h2>
 
-<% transactions.each(function(trans) { %>
+<div class='float-left mainbar'>
+	<div class='inner-mainbar'>
 
-	<li> <%= trans.escape('payer_name') %> paid 
-		<%= trans.escape('receiver_name') %> $
-		<%= trans.escape('amount')        %> for
-		<%= trans.escape('note')          %>
-	</li>
-<% }); %>
+		<div class='pay-box'>
+		</div>
+
+		<div class='news-feed'>
+			<ul><% transactions.each(function(trans) { %>
+				<li> <%= trans.escape('payer_name') %> paid 
+					<%= trans.escape('receiver_name') %> $
+					<%= trans.escape('amount')        %> for
+					<%= trans.escape('note')          %>
+				</li>
+			<% }); %></ul>
+		</div>
+		
+	</div>
+</div>
 
 <!-- slider input type = range -->

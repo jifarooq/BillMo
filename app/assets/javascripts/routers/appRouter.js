@@ -10,10 +10,8 @@ BillMo.Routers.AppRouter = Backbone.Router.extend({
 
 	index: function() {
 		this.transactions.fetch();
-		// debugger
 		var view = new BillMo.Views.TransactionsIndex({ 
-			collection: this.transactions,
-			el: '.news-feed'
+			collection: this.transactions
 		});
 		this._swapView(view);
 	},
