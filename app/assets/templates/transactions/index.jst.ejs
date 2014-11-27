@@ -2,8 +2,10 @@
 
 <% transactions.each(function(trans) { %>
 
-	<li> <%= trans.escape('amount') %>
-		for <%= trans.escape('note') %>
+	<li> <%= trans.escape('payer_name') %> paid 
+		<%= trans.escape('receiver_name') %> $
+		<%= trans.escape('amount')        %> for
+		<%= trans.escape('note')          %>
 	</li>
 <% }); %>
 

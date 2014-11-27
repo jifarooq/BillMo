@@ -1,3 +1,3 @@
-class api::ApiController < ApplicationController
+class Api::ApiController < ApplicationController
 	before_action :require_login!
 end
