@@ -1,19 +1,25 @@
-<button>Pay</button>
-<button>Charge</button>
+<button id='pay'>Pay</button>
+<button id='charge'>Charge</button>
 
 <form>
+
 	<label><br>Amount
-		<input type='text' name='trans[receiver]' value=''>
+		<input type='text' name='amount' value='10'>
 	</label>
 
 	<label>To:
-		<input type='text' name='trans[receiver]' value=''>
+		<input type='text' name='receiver_id' value='2'>
 	</label>
 
-	<input type='range' name='trans[amount]' value='5000'
-	min='0' max='10000' step='100'>
+<!-- 	<input type='range' value='5000'
+	min='0' max='10000' step='100'> -->
 
 	<label>For
-	<textarea rows='3' cols='50'>ice cream</textarea>
+	<textarea rows='3' cols='50' name='note'>ice cream</textarea>
 	</label>
+
+	<input type='hidden' name='payer_id' value='1'>
+
+	<input type='submit' value='Pay'>
+
 </form>

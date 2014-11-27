@@ -11,12 +11,17 @@
 #  receiver_id :integer          not null
 #
 
-#later make sure to add indices for payer_id and receiver_id!
-
 class Transaction < ActiveRecord::Base
 	validates :amount, :note, presence: true
 	validates :payer, :receiver, presence: true
+	#custom validation doesn't seem to work!
+	validate :payer_receiver_differ
 
 	belongs_to :payer, class_name: 'User', foreign_key: :payer_id
 	belongs_to :receiver, class_name: 'User', foreign_key: :receiver_id
+
+	def payer_receiver_differ
+		payer_id != receiver_id
+	end
+
 end

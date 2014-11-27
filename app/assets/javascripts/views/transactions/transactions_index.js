@@ -11,12 +11,15 @@ BillMo.Views.TransactionsIndex = Backbone.View.extend({
     }
     this.$el.append(content);
     this.addTransactionBox();
+    debugger
   	return this;
   },
 
   addTransactionBox: function() {
+    var newTrans = new BillMo.Models.Transaction();
     var transBox = new BillMo.Views.TransactionsBox({
-      model: this.model,
+      model: newTrans,
+      collection: this.collection
       // el: '.pay_box' don't do this
     });
     this.attachTransBox('.pay-box', transBox.render());

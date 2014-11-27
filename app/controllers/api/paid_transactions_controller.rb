@@ -1,12 +1,12 @@
 class Api::PaidTransactionsController < ApplicationController
 
 	def create 
-		@paid_trans = current_user.paid_transactions.Transaction.new(trans_params)
-		current_user.balance -= @paid_trans.amount
+		@paid_trans = current_user.paid_transactions.new(trans_params)
+		# current_user.balance -= @paid_trans.amount
+		debugger
 
 		if @paid_trans.save
-			# debugger
-			current_user.save
+			# current_user.save
 			render json: @paid_trans
 		else
 			render json: @paid_trans.errors.full_messages, status: :unprocessable_entity
@@ -15,9 +15,7 @@ class Api::PaidTransactionsController < ApplicationController
 
 	def index
 		@all_paid_trans = current_user.paid_transactions
-		# user jbuilder to add payer and receiver to transaction
 		render :index
-		# json: @all_paid_trans
 	end
 
 	def show
@@ -34,7 +32,7 @@ class Api::PaidTransactionsController < ApplicationController
 	private
 
 	def trans_params
-		params.require(:transaction).permit(:amount, :note, :payer_id, :receiver_id)
+		params.require(:paid_transaction).permit(:amount, :note, :payer_id, :receiver_id)
 	end
 
 end
