@@ -17,14 +17,13 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 		event.preventDefault();
 		var that = this;
 		var attrs = $(event.target).serializeJSON();
+		
+		attrs.payer_id = user.id;
+		attrs.payer = user.attributes['username'];
+		var filter = friends.where({ username: attrs.receiver });
+		attrs.receiver_id = new Backbone.Collection( filter ).at(0).id;
 
 		this.collection.create(attrs, { wait: true } );
-
-		// this.collection.create(attrs, { 
-		// 	success: function() {
-		// 		Backbone.history.navigate('', { trigger: true });
-		// 	}
-		// });
 	},
 
 	render: function() {

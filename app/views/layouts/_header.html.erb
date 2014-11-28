@@ -9,6 +9,14 @@
 								<input id="searchbox" value="Search someone" class='light-gray'autocomplete="on">
 							</form>
 						</span>
+
+						<span class="float-left">
+							<%= link_to 'Home', :root %>
+						</span>
+
+						<span class="float-left">
+							<%= link_to 'Add Friends', users_url %>
+						</span>
 			
 						<span class="float-right button">
 							<%= button_to 'Log Out', session_url, method: :delete %>

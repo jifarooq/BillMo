@@ -1,2 +1,6 @@
 <div id="main">
 </div>
+
+<script>
+  var _userJSON = '<%= User.all.to_json(only: [:id, :username]).html_safe %>';
+</script>

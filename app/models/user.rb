@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 	attr_reader :password
 
 	validates :username, :password_digest, presence: true
-	validates :password, length: { minimum: 6, allow_nil: true }
+	validates :password, length: { minimum: 5, allow_nil: true }
 	after_initialize :ensure_token
 
 	has_many(
@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
 		self.token = SecureRandom::urlsafe_base64(16)
 		self.save!
 		self.token
+	end
+
+	def is_friend?(user)
+		self.friends.include?(user)
 	end
 
 	private
