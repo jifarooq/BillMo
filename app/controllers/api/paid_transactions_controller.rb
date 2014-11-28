@@ -3,7 +3,6 @@ class Api::PaidTransactionsController < ApplicationController
 	def create 
 		@paid_trans = current_user.paid_transactions.new(trans_params)
 		# current_user.balance -= @paid_trans.amount
-		debugger
 
 		if @paid_trans.save
 			# current_user.save

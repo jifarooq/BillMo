@@ -4,7 +4,7 @@ BillMo.Routers.AppRouter = Backbone.Router.extend({
 	},
 	
 	initialize: function(options) {
-		this.$rootEl = options.$rootEl
+		this.$rootEl = options.$rootEl;
 		this.transactions = paid_transactions
 	},
 

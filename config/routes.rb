@@ -7,5 +7,6 @@ BillMo::Application.routes.draw do
 
   namespace :api, defaults: { format: :json} do
   	resources :paid_transactions, except: [:new, :update, :edit]
+  	resources :friends, only: :index
   end
 end

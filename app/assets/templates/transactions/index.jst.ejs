@@ -8,15 +8,14 @@
 
 		<div class='news-feed'>
 			<ul><% transactions.each(function(trans) { %>
-				<li> <%= trans.escape('payer_name') %> paid 
-					<%= trans.escape('receiver_name') %> $
+				<li> <%= trans.escape('payer') %> paid 
+					<%= trans.escape('receiver') %> $
 					<%= trans.escape('amount')        %> for
 					<%= trans.escape('note')          %>
+					<button id='delete' data-id="<%=trans.id%>">Delete</button>
 				</li>
 			<% }); %></ul>
 		</div>
 		
 	</div>
 </div>
-
-<!-- slider input type = range -->

@@ -4,6 +4,7 @@
 	min-height: 500px;
 }
 
+/*main */
 .inner-mainbar {
 	width: 635px;
 }
@@ -22,6 +23,11 @@
 	height: 1000px;
 }
 
+li {
+	list-style: none;
+}
+
+/* sidebar */
 .inner-sidebar {
 	width: 275px;
 	height: 400px;
