@@ -1,9 +1,10 @@
+<% var submitVal = (transState ? 'Pay' : 'Charge') %>
+<% var toVal = (transState ? 'receiver' : 'payer') %>
+
 <div class='inner-pay-box'>
 	<form>
 		<!-- ids and classes must go at the front -->
-
 		<div class='pay-charge-to'>
-
 			<div class='float-left pay-charge'>
 				<button id='pay'>Pay</button>
 				<button id='charge'>Charge</button>
@@ -11,22 +12,15 @@
 
 			<div class='float-right'> 
 				<label>To:
-					<input id='to' class='text-input' name='receiver' 
+					<input id='to' class='text-input' name='<%= toVal %>' 
 					 autocomplete='on'>
 				</label> 
-
-				<ul id='searchResults'>
-					<% friends.each(function(friend) { %>
-						<li><%= friend.escape('username') %></li>
-					<% }); %>
-				</ul>
 			</div>
-
 		</div> 
 
 		<!-- <div class='amount-for'> -->
 			<label><br>Amount
-				<input name='amount' value='10'>
+				<input class='text-input' name='amount' value='10'>
 			</label><br>
 
 			<!-- 	<input type='range' value='5000'min='0' max='10000' step='100'> -->
@@ -35,7 +29,7 @@
 			</label>
 		<!-- </div> -->
 
-		<input type='submit' value='Pay'>
+		<input id='submit' type='submit' value='<%= submitVal %>'>
 
 	</form>
 

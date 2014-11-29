@@ -12,8 +12,7 @@
 #
 
 class Transaction < ActiveRecord::Base
-	validates :amount, :note, presence: true
-	validates :payer, :receiver, presence: true
+	validates :amount, :note, :payer, :receiver, presence: true
 	#custom validation doesn't seem to work!
 	validate :payer_receiver_differ
 

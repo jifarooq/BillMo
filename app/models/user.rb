@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 5, allow_nil: true }
 	after_initialize :ensure_token
 
+	has_many :friendships
+	has_many :friends, through: :friendships
+
 	has_many(
 		:paid_transactions, 
 		class_name: 'Transaction',
@@ -31,8 +34,9 @@ class User < ActiveRecord::Base
 		foreign_key: :receiver_id
 	)
 
-	has_many :friendships
-	has_many :friends, through: :friendships
+	def transactions
+	  Transaction.where('payer_id = ? OR receiver_id = ?', id, id)
+	end
 
 	def password=(password)
 		@password = password

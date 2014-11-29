@@ -17,7 +17,6 @@ BillMo.Views.TransactionsIndex = Backbone.View.extend({
     }
     this.$el.html(content);
     this.addTransactionBox();
-    // debugger
   	return this;
   },
 

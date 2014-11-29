@@ -1,3 +1,6 @@
+$borderGray: #bbb;
+$myDarkBlue: #eaeaea;
+
 /*main */
 #main {
 	width: 950px;
@@ -11,13 +14,13 @@
 
 /* paybox */
 .outer-pay-box {
-	border: 1px solid #bbb;
+	border: 1px solid lightBlue;
+	border-radius: 4px;
 	width: 625px;
 	height: 150px;
 	margin-bottom: 20px;
 	padding: 5px;
 	background-color: white;
-	/*margin-left: 0px;*/
 }
 
 /*.inner-pay-box {
@@ -28,12 +31,11 @@
 }*/
 
 .pay-charge-to {
-	/*display: inline-block;*/
+	display: block;
 	width: 613px;
 	height: 40px;
 	line-height: 34px;
 	font-size: 13px;
-	/*position: absolute;*/
 }
 
 .pay-charge {
@@ -61,7 +63,8 @@
 
 /* news feed */
 .news-feed {
-	border: 1px solid #bbb;
+	border: 1px solid lightBlue;
+	border-radius: 4px;
 	width: 625px;
 	height: 1000px;
 	background-color: white;
@@ -78,7 +81,8 @@ li {
 }
 
 .profile {
-	border: 1px solid #bbb;
+	border: 1px solid lightBlue;
+	border-radius: 4px;
 	width: 265px;
 	height: 140px;
 	margin-bottom: 20px;
@@ -86,7 +90,8 @@ li {
 }
 
 .friends {
-	border: 1px solid #bbb;
+	border: 1px solid lightBlue;
+	border-radius: 4px;
 	width: 265px;
 	height: 200px;
 	margin-left: 10px;
