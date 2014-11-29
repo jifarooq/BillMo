@@ -6,6 +6,7 @@ BillMo.Views.TransactionsIndex = Backbone.View.extend({
   },
 
   initialize: function(options) {
+    this.listenTo(user, 'sync', this.render)
   	this.listenTo(this.collection, 'sync', this.render)
     this.listenTo(this.collection, 'remove', this.render)
   },
@@ -26,7 +27,7 @@ BillMo.Views.TransactionsIndex = Backbone.View.extend({
       model: newTrans,
       collection: this.collection
     });
-    this.attachTransBox('.pay-box', transBox.render());
+    this.attachTransBox('.outer-pay-box', transBox.render());
   },
 
   attachTransBox: function(selector, view) {

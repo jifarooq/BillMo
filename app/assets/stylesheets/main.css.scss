@@ -1,26 +1,70 @@
+/*main */
 #main {
 	width: 950px;
 	margin: 0 auto;
 	min-height: 500px;
 }
 
-/*main */
 .inner-mainbar {
 	width: 635px;
 }
 
-.pay-box {
+/* paybox */
+.outer-pay-box {
 	border: 1px solid #bbb;
 	width: 625px;
 	height: 150px;
 	margin-bottom: 20px;
+	padding: 5px;
+	background-color: white;
 	/*margin-left: 0px;*/
 }
 
+/*.inner-pay-box {
+	width: 600px;
+	height: 140px;
+	padding: 2px;
+	/*margin: 5px;
+}*/
+
+.pay-charge-to {
+	/*display: inline-block;*/
+	width: 613px;
+	height: 40px;
+	line-height: 34px;
+	font-size: 13px;
+	/*position: absolute;*/
+}
+
+.pay-charge {
+	width: 150px;
+}
+
+/*.amount-for {
+	position: relative;
+}*/
+
+.text-input {
+	width: 400px;
+}
+
+/* to search */
+#searchResults {
+  /*display: none;*/
+  position: absolute;
+  width: 400px;
+}
+
+#searchResults:hover {
+	display: block;
+}
+
+/* news feed */
 .news-feed {
 	border: 1px solid #bbb;
 	width: 625px;
 	height: 1000px;
+	background-color: white;
 }
 
 li {
@@ -46,4 +90,22 @@ li {
 	width: 265px;
 	height: 200px;
 	margin-left: 10px;
+}
+
+/*form and buttons */
+input[type=submit] {
+	cursor: pointer;
+	background: #139BD8;
+	color: white;
+	border: 1px solid #0859B9;
+	font-family: helvetica;
+	font-size: 14px;
+	border-radius: 5px;
+}
+
+button {
+	background-color: eef0f4;
+	font-family: arial;
+	font-size: 13px;
+	border-radius: 4px;
 }

@@ -5,3 +5,4 @@ BillMo.Collections.Friends = Backbone.Collection.extend({
 });
 
 friends = new BillMo.Collections.Friends();
+friends.fetch();

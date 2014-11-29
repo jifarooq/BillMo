@@ -1,26 +1,42 @@
-<button id='pay'>Pay</button>
-<button id='charge'>Charge</button>
+<div class='inner-pay-box'>
+	<form>
+		<!-- ids and classes must go at the front -->
 
-<form>
+		<div class='pay-charge-to'>
 
-	<label><br>Amount
-		<input type='text' name='amount' value='10'>
-	</label>
+			<div class='float-left pay-charge'>
+				<button id='pay'>Pay</button>
+				<button id='charge'>Charge</button>
+			</div>
 
-	<!-- ids and classes must go at the front -->
-	<label>To:
-		<input id='trans-to' name='receiver' value=''>
-	</label>
+			<div class='float-right'> 
+				<label>To:
+					<input id='to' class='text-input' name='receiver' 
+					 autocomplete='on'>
+				</label> 
 
-<!-- 	<input type='range' value='5000'
-	min='0' max='10000' step='100'> -->
+				<ul id='searchResults'>
+					<% friends.each(function(friend) { %>
+						<li><%= friend.escape('username') %></li>
+					<% }); %>
+				</ul>
+			</div>
 
-	<label>For
-	<textarea rows='3' cols='50' name='note'>ice cream</textarea>
-	</label>
+		</div> 
 
-	<!-- <input type='hidden' name='payer' value=''> -->
+		<!-- <div class='amount-for'> -->
+			<label><br>Amount
+				<input name='amount' value='10'>
+			</label><br>
 
-	<input type='submit' value='Pay'>
+			<!-- 	<input type='range' value='5000'min='0' max='10000' step='100'> -->
+			<label>For
+				<input class='text-input' name='note' value='ice cream'>
+			</label>
+		<!-- </div> -->
 
-</form>
+		<input type='submit' value='Pay'>
+
+	</form>
+
+</div> 

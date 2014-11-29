@@ -1,5 +1,4 @@
 BillMo::Application.routes.draw do
-  # root to: 'sessions#new'
   root to: 'static_pages#root'
 
   resources :users
@@ -9,6 +8,10 @@ BillMo::Application.routes.draw do
   namespace :api, defaults: { format: :json} do
   	resources :paid_transactions, except: [:new, :update, :edit]
   	resources :friends, only: :index
-  	resources :users, only: :index
+
+    #TA question!
+    #this should really be a singular resource, 
+    #but update isn't working properly on backbone side
+  	resources :users, only: [:index, :update]
   end
 end
