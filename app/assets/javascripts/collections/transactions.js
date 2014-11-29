@@ -1,5 +1,5 @@
 BillMo.Collections.Transactions = Backbone.Collection.extend({
-	url: 'api/paid_transactions',
+	url: 'api/transactions',
   model: BillMo.Models.Transaction,
   comparator: function(trans) {
   	// hacky to use id instead of created_at, but works for now
@@ -8,5 +8,4 @@ BillMo.Collections.Transactions = Backbone.Collection.extend({
 
 });
 
-// only need paid_transactions
-paid_transactions = new BillMo.Collections.Transactions();
+transactions = new BillMo.Collections.Transactions();

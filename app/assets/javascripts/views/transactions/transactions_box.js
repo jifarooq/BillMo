@@ -36,8 +36,10 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 	// right now, re-rendering whole form, when only needs to render button!
 	setBoxState: function(event) {
 		event.preventDefault();
+		
 		if (event.target.id === 'pay') this.payOn = true;
-		else this.payOn = false;
+			else this.payOn = false;
+
 		this.render().$el;
 	},
 

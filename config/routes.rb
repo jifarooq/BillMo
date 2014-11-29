@@ -6,7 +6,7 @@ BillMo::Application.routes.draw do
   resources :friendships, only: [:create, :destroy]
 
   namespace :api, defaults: { format: :json} do
-  	resources :paid_transactions, except: [:new, :update, :edit]
+  	resources :transactions, except: [:new, :update, :edit]
   	resources :friends, only: :index
 
     #TA question!
