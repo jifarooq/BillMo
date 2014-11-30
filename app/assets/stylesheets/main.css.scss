@@ -74,31 +74,8 @@ li {
 	list-style: none;
 }
 
-/* sidebar */
-.inner-sidebar {
-	width: 275px;
-	height: 400px;
-}
-
-.profile {
-	border: 1px solid lightBlue;
-	border-radius: 4px;
-	width: 265px;
-	height: 140px;
-	margin-bottom: 20px;
-	margin-left: 10px;
-}
-
-.friends {
-	border: 1px solid lightBlue;
-	border-radius: 4px;
-	width: 265px;
-	height: 200px;
-	margin-left: 10px;
-}
-
 /*form and buttons */
-input[type=submit] {
+input[type=submit], .pushed-button {
 	cursor: pointer;
 	background: #139BD8;
 	color: white;

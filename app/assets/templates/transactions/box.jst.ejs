@@ -1,18 +1,17 @@
 <% var submitVal = (transState ? 'Pay' : 'Charge') %>
-<% var toVal = (transState ? 'receiver' : 'payer') %>
 
 <div class='inner-pay-box'>
 	<form>
 		<!-- ids and classes must go at the front -->
 		<div class='pay-charge-to'>
 			<div class='float-left pay-charge'>
-				<button id='pay'>Pay</button>
+				<button id='pay' class='pushed-button'>Pay</button>
 				<button id='charge'>Charge</button>
 			</div>
 
 			<div class='float-right'> 
 				<label>To:
-					<input id='to' class='text-input' name='<%= toVal %>' 
+					<input id='to' class='text-input' name='receiver' 
 					 autocomplete='on'>
 				</label> 
 			</div>
@@ -29,7 +28,7 @@
 			</label>
 		<!-- </div> -->
 
-		<input id='submit' type='submit' value='<%= submitVal %>'>
+		<span id='submit'></span>
 
 	</form>
 

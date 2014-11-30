@@ -1,5 +1,6 @@
 BillMo.Views.TransactionsBox = Backbone.View.extend({
 	template: JST['transactions/box'],
+	template2: JST['transactions/submit'],
 
 	events: {
 		'submit form': 'submitTransaction',
@@ -8,15 +9,8 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		this.payOn = true;
+		this.payOn = this.payOn || true;
 		this.listenTo(friends, 'sync', this.render)
-	},
-
-	submitTransaction: function(event) {
-		event.preventDefault();
-		var attrs = $(event.target).serializeJSON();
-		this.createTransaction(attrs);
-		this.updateBalance(attrs.amount);
 	},
 
 	createTransaction: function(attrs) {
@@ -26,26 +20,16 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 			attrs.receiver_id = friends.findWhere({ username: attrs.receiver }).id;
 		} else {
 			attrs.receiver_id = user.id;
+			//by default, form 'to' is receiver, so need to flip here
+			attrs.payer = attrs.receiver; 
 			attrs.receiver = user.attributes['username'];
 			attrs.payer_id = friends.findWhere({ username: attrs.payer }).id;
 		}
 
-		this.collection.create(attrs, { wait: true });
-	},
-
-	// right now, re-rendering whole form, when only needs to render button!
-	setBoxState: function(event) {
-		event.preventDefault();
-		
-		if (event.target.id === 'pay') this.payOn = true;
-			else this.payOn = false;
-
-		this.render().$el;
-	},
-
-	updateBalance: function(amount) {
-		var curBalance = user.get('balance');
-		user.save('balance', curBalance - amount);
+		this.collection.create(attrs, {
+			wait: true,
+			error: function() { alert('Amount must be a number'); }
+		});
 	},
 
 	render: function() {
@@ -54,6 +38,7 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 			transState: this.payOn 
 		});
 		this.$el.html(content);
+		this.renderSubmitButton();
 		return this;
 	},
 
@@ -64,6 +49,43 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 			source: names,
 			position: { offset: '-20 -300' }
 		});
+	},
+
+	renderSubmitButton: function() {
+		var submitVal = (this.payOn ? 'Pay' : 'Charge');
+		var content = this.template2({ submitVal: submitVal });
+		this.$('#submit').html(content);
+		return this;
+	},
+
+	setBoxState: function(event) {
+		event.preventDefault();
+		$(event.target).addClass('pushed-button')
+
+		if (event.target.id === 'pay') {
+			this.payOn = true;
+			this.$('#charge').removeClass('pushed-button')
+		} else {
+			this.payOn = false;
+			this.$('#pay').removeClass('pushed-button')
+		}
+
+		this.renderSubmitButton().$el;
+	},
+
+	submitTransaction: function(event) {
+		event.preventDefault();
+		var attrs = $(event.target).serializeJSON();
+		this.createTransaction(attrs);
+		this.updateBalance(attrs.amount);
+	},
+
+	updateBalance: function(amount) {
+		if (amount * 0 === 0) {
+			var curBalance = user.get('balance');
+			amount = (this.payOn ? amount : -amount);
+			user.save('balance', curBalance - amount);
+		}
 	},
 
 });

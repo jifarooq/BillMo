@@ -4,8 +4,7 @@ class Api::UsersController < ApplicationController
 	end
 
 	def update
-		current_user.update(user_params)
-		render json: current_user
+		render json: current_user if current_user.update(user_params)
 	end
 
 	private

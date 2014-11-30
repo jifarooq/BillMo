@@ -1,10 +1,33 @@
+<% friends = current_user.friends %>
+
 <div class='float-right sidebar'>
 	<div class='inner-sidebar'>
+
 		<div class='profile'>
 			User info here
+			<%= form_for current_user do |f| %>
+				<div>
+					<%= f.label :filepicker_url, "Upload Your Avatar:" %>
+					<%= f.filepicker_field :filepicker_url %>
+				</div>
+			<%= f.submit %>
+			<% end %>
+
+			<% if current_user.filepicker_url %>
+				<%= filepicker_image_tag current_user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+			<% end %>
 		</div>
+
 		<div class='friends'>
-			Friends listed here
+			<span class='blue-text'>Friends</span> (<%= friends.size %>)
+			<span class="blue-text">
+				<%= link_to 'Find Friends', users_url %>
+			</span>
+
+			<% friends.each do |friend| %>
+				<li class='blue-text'><%= friend.username %></li>
+			<% end %>
 		</div>
 	</div>
 </div>
+

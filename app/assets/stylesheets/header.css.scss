@@ -9,6 +9,10 @@
 	height: 50px;
 	width: 100%;
 	position: absolute;
+	color: white;
+	a {
+		color: white;
+	}
 }
 
 .float-left {
@@ -19,8 +23,6 @@
 .float-right {
 	float:right;
 	padding: 1%;
-	/*color: white;*/
-	color: black;
 }
 
 .button {
