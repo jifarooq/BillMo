@@ -25,4 +25,12 @@ class Transaction < ActiveRecord::Base
 		payer_id != receiver_id
 	end
 
+	def rand_device
+		rand_num = rand(100)
+		return 'iphone' if rand_num.between?(0, 39)
+		return 'web' if rand_num.between?(40, 69)
+		return 'android' if rand_num.between?(70, 89)
+		return 'carrier pigeon' if rand_num.between?(90, 99)
+	end
+
 end

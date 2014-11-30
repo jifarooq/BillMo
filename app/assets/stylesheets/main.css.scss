@@ -42,36 +42,8 @@ $myDarkBlue: #eaeaea;
 	width: 150px;
 }
 
-/*.amount-for {
-	position: relative;
-}*/
-
 .text-input {
 	width: 400px;
-}
-
-/* to search */
-#searchResults {
-  /*display: none;*/
-  position: absolute;
-  width: 400px;
-}
-
-#searchResults:hover {
-	display: block;
-}
-
-/* news feed */
-.news-feed {
-	border: 1px solid lightBlue;
-	border-radius: 4px;
-	width: 625px;
-	height: 1000px;
-	background-color: white;
-}
-
-li {
-	list-style: none;
 }
 
 /*form and buttons */

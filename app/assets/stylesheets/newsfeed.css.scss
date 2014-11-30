@@ -1,0 +1,23 @@
+/* news feed */
+.news-feed {
+	border: 1px solid lightBlue;
+	border-radius: 4px;
+	width: 625px;
+	height: 2000px;
+	background-color: white;
+	.feed-item {
+		min-height:75px;
+		border-bottom: 1px dotted lightBlue;
+	}
+}
+
+li {
+	list-style: none;
+}
+
+#delete {
+	background-color: lightBlue;
+	border: 1px solid lightSkyBlue;
+	border-radius: 4px;
+	font-size: 10px;
+}
