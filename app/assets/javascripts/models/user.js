@@ -2,7 +2,7 @@ BillMo.Models.User = Backbone.Model.extend({
 	urlRoot: 'api/users',
 
 	getBalance: function() {
-		var curBalance = user.get('balance');
+		var curBalance = this.get('balance');
 		return '$' + parseFloat(curBalance).toFixed(2);
 	}
 });

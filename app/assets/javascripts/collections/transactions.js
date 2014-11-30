@@ -5,7 +5,6 @@ BillMo.Collections.Transactions = Backbone.Collection.extend({
   	// hacky to use id instead of created_at, but works for now
   	return -trans.id;
   },
-
 });
 
 transactions = new BillMo.Collections.Transactions();
