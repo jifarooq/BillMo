@@ -25,7 +25,8 @@ BillMo.Views.CommentForm = Backbone.View.extend({
 
   clearSubmitButton: function() {
     this.$('.comment-submit').empty();
-    this.$('#add-comment').html('Leave a comment')
+    this.$('#add-comment').html('Leave a comment');
+    // debugger
     return this;
   },
 });

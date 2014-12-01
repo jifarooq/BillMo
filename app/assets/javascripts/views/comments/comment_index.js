@@ -1,4 +1,4 @@
-BillMo.Views.CommentsIndex = View.extend({
+BillMo.Views.CommentsIndex = Backbone.View.extend({
 	template: JST["comments/index"],
 	events: {'click #delete-comment': 'destroyComment'},
 
@@ -12,4 +12,4 @@ BillMo.Views.CommentsIndex = View.extend({
 		this.$el.html(content);
 		return this;
 	},
-}
+});
