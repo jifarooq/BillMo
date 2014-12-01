@@ -1,16 +1,22 @@
 BillMo.Views.CommentForm = Backbone.View.extend({
   template: JST["comments/form"],
   template2: JST['submit'],
-  // on input, clear val and render submit button
   events: {
     'keydown #add-comment': 'renderSubmitButton',
-    'mouseleave #add-comment': 'clearSubmitButton'
+    'mouseleave form': 'clearSubmitButton',
+    'submit form': 'createComment'
+    //form should come back on mouseenter
   },
 
-  createComment: function(attrs) {
+  clearSubmitButton: function() {
+    this.$('.comment-submit').empty();
+  },
+
+  createComment: function(event) {
     event.preventDefault();
-    debugger
-    this.collection.create(attrs, { wait: true });
+    var attrs = $(event.target).serializeJSON();
+    attrs.transaction_id = this.collection.transaction.id;
+    this.collection.create(attrs);
   },
   
   render: function(){
@@ -25,9 +31,6 @@ BillMo.Views.CommentForm = Backbone.View.extend({
     return this;
   },
 
-  clearSubmitButton: function() {
-    this.$('.comment-submit').empty();
-  },
 });
 
 // 'mousedown #to': 'targetFocus',

@@ -1,7 +1,9 @@
 Backbone.CompositeView = Backbone.View.extend({
   // only use addSubview at first
   addSubview: function (selector, subview) {
-    this.subviews(selector).push(subview);
+    // beware: changed from push to unshift to render news-feed in order!
+    this.subviews(selector).unshift(subview);
+
     // Try to attach the subview. Render it as a convenience.
     this.attachSubview(selector, subview.render());
   },
@@ -29,11 +31,12 @@ Backbone.CompositeView = Backbone.View.extend({
     // All that is necessary is "attaching" the subview `$el`s to the
     // relevant points in the parent CompositeView.
 
-    var view = this;
+    var compView = this;
     _(this.subviews()).each(function (subviews, selector) {
-      view.$(selector).empty();
+      compView.$(selector).empty();
+
       _(subviews).each(function (subview) {
-        view.attachSubview(selector, subview);
+        compView.attachSubview(selector, subview);
       });
     });
   },
