@@ -1,23 +1,20 @@
-BillMo.Views.TransactionsIndex = Backbone.View.extend({
+BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
   template: JST['transactions/index'],
 
-  events: {
-    'click #delete': 'destroyTrans'
-  },
-
   initialize: function(options) {
-    this.listenTo(user, 'sync', this.render)
-  	this.listenTo(this.collection, 'sync', this.render)
-    this.listenTo(this.collection, 'remove', this.render)
+    this.listenTo(user, 'sync', this.render);
+  	this.listenTo(this.collection, 'add', this.addFeedItem);
+
+    //works for now but not efficient
+    this.listenTo(this.collection, 'remove', this.render);
+
+    //ensure new feed items stay on refresh!
+    this.listenTo(this.collection, 'sync', this.render);
   },
 
-  render: function() {
-    if (this.collection.length !== 'undefined') {
-    	var content = this.template({ transactions: this.collection });
-    }
-    this.$el.html(content);
-    this.addTransactionBox();
-  	return this;
+  addFeedItem: function(trans) {
+    var itemView = new BillMo.Views.TransactionsIndexItem({ model: trans });
+    this.addSubview('.news-feed', itemView);
   },
 
   addTransactionBox: function() {
@@ -26,18 +23,30 @@ BillMo.Views.TransactionsIndex = Backbone.View.extend({
       model: newTrans,
       collection: this.collection
     });
-    this.attachTransBox('.outer-pay-box', transBox.render());
+    this.addSubview('.outer-pay-box', transBox);
   },
 
-  attachTransBox: function(selector, view) {
-    this.$(selector).append(view.$el);
-    view.delegateEvents();
+  removeFeedItem: function(trans) {
+    var selector = '.news-feed';
+    var subview = _.find(this.subviews(selector), function(subview) {
+      if(subview.model.id === trans.id){ return true; }
+    });
+    // debugger
+    // ASK TA about this
+    this.removeSubview(selector, subview);
+    // subview.remove();
   },
 
-  destroyTrans: function(event) {
-    var id = $(event.target).data('id');
-    var trans = this.collection.get(id);
-    trans.destroy();
+  render: function() {
+    var content = this.template();
+    this.$el.html(content);
+    this.addTransactionBox();
+    this.renderFeedItems();
+    return this;
+  },
+
+  renderFeedItems: function() {
+    this.collection.each(this.addFeedItem.bind(this));
   },
 
 });

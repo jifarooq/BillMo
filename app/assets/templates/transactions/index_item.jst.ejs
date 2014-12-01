@@ -1,0 +1,38 @@
+<div class='feed-item'>
+	<table width='100%'><tbody>
+		<tr>
+			<td class='photo-space' width='10%'></td>
+
+			<td width='80%'>
+				<div class='payer-receiver'>
+					<span class='blue-text bold'>
+						<a href="<%= trans.escape('payer_url')%>">
+						 <%= trans.escape('payer')    %></a>
+					</span> paid
+
+					<span class='blue-text bold'>
+						<a href="<%= trans.escape('receiver_url')%>">
+							<%= trans.escape('receiver') %></a>
+					</span>
+
+					<span class='money'><%= trans.formatAmount()     %></span>
+				</div>
+
+				<div class='note'><%= trans.escape('note') %></div>
+
+				<div><span class='blue-text bold'>Like </span>
+					<%= trans.escape('post_date') %> via <%= trans.escape('device') %>
+				</div>
+			</td>
+
+			<td>
+				<button id='delete' data-id="<%=trans.id%>">Delete</button>
+			</td>
+		</tr>
+
+		<tr>
+			<td width='10%'></td>
+			<td width='80%' class='comment'>Leave a comment...</td>
+		</tr>
+	</tbody></table>
+</div>
