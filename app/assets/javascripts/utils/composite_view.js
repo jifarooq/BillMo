@@ -48,7 +48,7 @@ Backbone.CompositeView = Backbone.View.extend({
   },
 
   removeSubview: function (selector, subview) {
-    // remove from browser
+    // remove from browser?
     subview.remove();
 
     // remove from subviews array

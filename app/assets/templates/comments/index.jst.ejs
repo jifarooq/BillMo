@@ -1,0 +1,6 @@
+<% trans.comments.each( function(comment) { %>
+	<div>
+		<%= comment.content %>
+		<button id='delete-comment' data-id="<%=comment.id%>">Delete</button>
+	</div>
+<% }); %>

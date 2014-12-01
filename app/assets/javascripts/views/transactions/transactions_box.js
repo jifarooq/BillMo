@@ -1,6 +1,6 @@
 BillMo.Views.TransactionsBox = Backbone.View.extend({
 	template: JST['transactions/box'],
-	template2: JST['transactions/submit'],
+	template2: JST['submit'],
 
 	events: {
 		'submit form': 'submitTransaction',
@@ -54,7 +54,7 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 	renderSubmitButton: function() {
 		var submitVal = (this.payOn ? 'Pay' : 'Charge');
 		var content = this.template2({ submitVal: submitVal });
-		this.$('#submit').html(content);
+		this.$('#submit-trans').html(content);
 		return this;
 	},
 
@@ -89,13 +89,4 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 	},
 
 });
-
-// 'mousedown #to': 'targetFocus',
-// targetFocus: function(event) {
-// 	// toBox.addClass('hover');
-// 	$(event.target).focus();
-// },
-
-// var filter = friends.where({ username: attrs.receiver });
-// attrs.receiver_id = new Backbone.Collection( filter ).at(0).id;
 

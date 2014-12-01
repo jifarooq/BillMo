@@ -20,10 +20,7 @@ class Transaction < ActiveRecord::Base
 
 	belongs_to :payer, class_name: 'User', foreign_key: :payer_id
 	belongs_to :receiver, class_name: 'User', foreign_key: :receiver_id
-
-	def payer_receiver_differ
-		payer_id != receiver_id
-	end
+	has_many :comments
 
 	def rand_device
 		rand_num = rand(100)
@@ -33,4 +30,9 @@ class Transaction < ActiveRecord::Base
 		return 'carrier pigeon' if rand_num.between?(90, 99)
 	end
 
+	private 
+		def payer_receiver_differ
+			payer_id != receiver_id
+		end
+		
 end
