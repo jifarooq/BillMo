@@ -8,6 +8,8 @@ BillMo.Views.CommentForm = Backbone.View.extend({
   },
 
   createComment: function(attrs) {
+    event.preventDefault();
+    debugger
     this.collection.create(attrs, { wait: true });
   },
   
@@ -25,9 +27,6 @@ BillMo.Views.CommentForm = Backbone.View.extend({
 
   clearSubmitButton: function() {
     this.$('.comment-submit').empty();
-    this.$('#add-comment').html('Leave a comment');
-    // debugger
-    return this;
   },
 });
 
