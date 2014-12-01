@@ -12,10 +12,6 @@ BillMo::Application.routes.draw do
 
   	resources :friends, only: :index
     resources :comments, only: [:create, :destroy]
-
-    #TA question!
-    #this should really be a singular resource, 
-    #but update isn't working properly on backbone side
-  	resources :users, only: [:index, :update]
+  	resource :user, only: [:show, :update]
   end
 end

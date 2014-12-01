@@ -7,4 +7,4 @@ BillMo.Collections.Transactions = Backbone.Collection.extend({
   },
 });
 
-transactions = new BillMo.Collections.Transactions();
+BillMo.transactions = new BillMo.Collections.Transactions();

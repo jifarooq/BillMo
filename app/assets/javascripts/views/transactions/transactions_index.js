@@ -2,11 +2,13 @@ BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
   template: JST['transactions/index'],
 
   initialize: function(options) {
-    this.listenTo(user, 'sync', this.render);
+    this.listenTo(BillMo.user, 'sync', this.render);
   	this.listenTo(this.collection, 'add', this.addFeedItem);
+    this.listenTo(this.collection, 'remove', this.removeFeedItem);
 
-    //works for now but not efficient
-    this.listenTo(this.collection, 'remove', this.render);
+    // these used to be called in render.
+    this.renderFeedItems();
+    this.addTransactionBox();
 
     //ensure new feed items stay on refresh!
     this.listenTo(this.collection, 'sync', this.render);
@@ -28,20 +30,18 @@ BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
 
   removeFeedItem: function(trans) {
     var selector = '.news-feed';
+
     var subview = _.find(this.subviews(selector), function(subview) {
       if(subview.model.id === trans.id){ return true; }
     });
-    // debugger
-    // ASK TA about this
+
     this.removeSubview(selector, subview);
-    // subview.remove();
   },
 
   render: function() {
     var content = this.template();
     this.$el.html(content);
-    this.addTransactionBox();
-    this.renderFeedItems();
+    this.attachSubviews();  // remove won't work properly w/o this
     return this;
   },
 

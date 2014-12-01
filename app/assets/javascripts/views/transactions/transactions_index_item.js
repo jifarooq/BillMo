@@ -1,6 +1,10 @@
 BillMo.Views.TransactionsIndexItem = Backbone.CompositeView.extend({
   template: JST["transactions/index_item"],
-  events: {'click #delete': 'destroyTrans'},
+  events: {'click .delete-trans': 'destroyTrans'},
+
+  initialize: function () {
+    this.addCommentForm();
+  },
 
   addCommentForm: function() {
     var commentForm = new BillMo.Views.CommentForm();
@@ -14,7 +18,7 @@ BillMo.Views.TransactionsIndexItem = Backbone.CompositeView.extend({
   render: function(){
     var content = this.template({ trans: this.model });
     this.$el.html(content);
-    this.addCommentForm();
+    this.attachSubviews();
     return this;
   }
 });

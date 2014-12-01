@@ -1,5 +1,6 @@
 BillMo.Models.User = Backbone.Model.extend({
-	urlRoot: 'api/users',
+	// for user singular resource, just need url, not urlRoot
+	url: 'api/user',
 
 	getBalance: function() {
 		var curBalance = this.get('balance');
@@ -7,5 +8,5 @@ BillMo.Models.User = Backbone.Model.extend({
 	}
 });
 
-user = new BillMo.Models.User();
-user.fetch();
+BillMo.user = new BillMo.Models.User();
+BillMo.user.fetch();

@@ -5,13 +5,16 @@
 
 		<div class='profile'>
 			User info here
-			<%= form_for current_user do |f| %>
-				<div>
-					<%= f.label :filepicker_url, "Upload Your Avatar:" %>
-					<%= f.filepicker_field :filepicker_url %>
-				</div>
-			<%= f.submit %>
-			<% end %>
+			<button>Upload photo</button>
+
+			<script type="text/javascript">
+				$('button').on('click', function() {
+					filepicker.pickAndStore({mimetype:"image/*"},{},
+						function(InkBlobs){
+							console.log(JSON.stringify(InkBlobs));
+						});
+				});
+			</script>
 
 			<% if current_user.filepicker_url %>
 				<%= filepicker_image_tag current_user.filepicker_url, w: 160, h: 160, fit: 'clip' %>

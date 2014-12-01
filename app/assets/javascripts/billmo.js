@@ -8,4 +8,3 @@ window.BillMo = {
   	Backbone.history.start();
   }
 };
-

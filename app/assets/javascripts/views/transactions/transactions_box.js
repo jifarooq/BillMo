@@ -14,6 +14,8 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 	},
 
 	createTransaction: function(attrs) {
+		var user = BillMo.user;
+		
 		if (this.payOn) {
 			attrs.payer_id = user.id;
 			attrs.payer = user.attributes['username'];
@@ -81,6 +83,7 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 	},
 
 	updateBalance: function(amount) {
+		var user = BillMo.user;
 		if (amount * 0 === 0) {
 			var curBalance = user.get('balance');
 			amount = (this.payOn ? amount : -amount);
