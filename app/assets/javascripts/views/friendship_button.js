@@ -7,6 +7,7 @@ BillMo.Views.Friendship = Backbone.View.extend({
 	},
 
 	initialize: function() {
+		// listenTo won't work here?
 		this.listenTo(BillMo.friendships, 'sync remove', this.render);
 	},
 
@@ -24,6 +25,7 @@ BillMo.Views.Friendship = Backbone.View.extend({
 	},
 
 	render: function() {
+		var users = BillMo.users.remove(BillMo.currentUser.id);
 		var content = this.template({ users: BillMo.users });
 		this.$el.html(content);
 		return this;

@@ -8,6 +8,7 @@ BillMo.Models.CurrentUser = Backbone.Model.extend({
 	},
 
 	isFriend: function(user) {
+		// debugger
 		return !!BillMo.friends.get(user.id);
 	}
 });
