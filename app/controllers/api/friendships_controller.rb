@@ -1,6 +1,5 @@
 class Api::FriendshipsController < ApplicationController
 	#need to move this into friends_controller and do it front-end!
-
 	def create
 		@friendship = current_user.friendships.new(friendship_params)
 		@friendship.try(:save)
@@ -8,9 +7,14 @@ class Api::FriendshipsController < ApplicationController
 	end
 
 	def destroy
-		@friendship = current_user.friendships.find_by_friend_id(params[:id])
+		@friendship = current_user.friendships.find(params[:id])
 		@friendship.try(:destroy)
 		render json: {}
+	end
+
+	def index
+		@friendships = current_user.friendships
+		render json: @friendships
 	end
 
   private

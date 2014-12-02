@@ -1,0 +1,22 @@
+<% users.each(function(user) { %>
+
+	<% if (BillMo.currentUser.isFriend(user)) { %>
+		<% var klass = 'remove-friend', text = 'Break Friendship' %>
+	<% } else { %>
+		<% var klass = 'add-friend', text = 'Add Friend' %>
+	<% }; %>
+
+	<tr>
+		<td><%= user.escape('username') %></td>
+		<td><a href=''>Show</a></td>
+		<td><a href=''>Edit</a></td>
+
+		<% if(BillMo.currentUser.id !== user.id) { %>
+			<td>
+				<button class='<%=klass%>' data-id='<%=user.id%>'><%=text%></button>
+			</td>
+		<% }; %>
+	</tr>
+
+<% }); %>
+

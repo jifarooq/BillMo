@@ -47,7 +47,8 @@ $myDarkBlue: #eaeaea;
 }
 
 /*form and buttons */
-input[type=submit], .pushed-button {
+input[type=submit], .pushed-button, .add-friend, .remove-friend 
+{
 	cursor: pointer;
 	background: #139BD8;
 	color: white;

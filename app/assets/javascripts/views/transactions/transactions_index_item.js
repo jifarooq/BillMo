@@ -36,8 +36,4 @@ BillMo.Views.TransactionsIndexItem = Backbone.CompositeView.extend({
     this.attachSubviews();
     return this;
   }
-
-  // renderComments: function() {
-  //   this.collection.each(this.addFeedItem.bind(this));
-  // },
 });
