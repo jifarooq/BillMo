@@ -23,17 +23,17 @@
 	border-right: dashed 1px #71b0c2;
 	display: inline-block;
 	padding: 2%;
-	/*text-align: center;*/
-	/*position: absolute;*/
+}
+
+.hoverable {
+	&:hover {
+  	background-color: lightSalmon;
+  }
 }
 
 .person-name {
 	font-weight: bold;
 	color: #0859B9;
-}
-
-hover {
-  background-color: lightSalmon;
 }
 
 /*button {

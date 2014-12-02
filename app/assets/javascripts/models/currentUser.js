@@ -14,4 +14,3 @@ BillMo.Models.CurrentUser = Backbone.Model.extend({
 });
 
 BillMo.currentUser = new BillMo.Models.CurrentUser();
-BillMo.currentUser.fetch();
