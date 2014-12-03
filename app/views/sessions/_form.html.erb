@@ -1,13 +1,44 @@
-<h1>Log In</h1>
+<% if flash[:errors] %>
+  <div id="error_explanation">
+  	<h2>Invalid username or password</h2>
+  </div>
+<% end %>
 
 <form action="<%= session_url %>" method="post">
-	<label>Username
-		<input type="text" name="user[username]">
+	<label>Username<br>
+		<input id='username' name="user[username]">
 	</label>
 
-	<label>Password
-		<input type="password" name="user[password]">
+	<label>Password<br>
+		<input id='pw' type="password" name="user[password]">
 	</label>
 
-	<input type="submit" value='Sign In'>
+	<input class='submit' type="submit" value='Sign In'>
+
+	<button id='guest'>Guest</button>
+
+	<script>
+		$('#guest').on('click', clickGuest);
+
+		function clickGuest(event) {
+			event.preventDefault();
+			var inputs = ['g', 'gu', 'gue', 'gues', 'guest'];
+			var ms = 400;
+
+			_(inputs).each(function(input, i) {
+				timeout = (i + 1) * ms;
+				setTimeout(inputAnimate.bind(input), timeout);				
+			});
+
+			setTimeout(function() {
+				$('.submit').trigger('click');
+			}, ms * 6);
+		};
+
+		function inputAnimate() {
+			$('#username').val(this);
+			$('#pw').val(this);
+		};
+			
+	</script>
 </form>

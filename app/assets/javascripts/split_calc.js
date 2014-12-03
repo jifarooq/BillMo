@@ -25,14 +25,14 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		amt = this.randAmount();
 		name = name || 'person' + amt;
 		var content = this.personTemplate({ name: name, amt: amt });
-		this.$('#calc-holder').append(content);
+		$(content).insertAfter(this.$('#calc-holder .first-person'));
 	},
 
 	calculateSplit: function() {
-		var names = this.getNames(event);
-		var subtotals = this.getSubtotals(event);
+		var names = this._getNames(event);
+		var subtotals = this._getSubtotals(event);
 		var split = this._average(subtotals);
-		var debts = this.getDebts(subtotals, split);
+		var debts = this._getDebts(subtotals, split);
 		var results = [];
 
 		_(debts).each(function(debt, i) { 
@@ -61,42 +61,10 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		return results;
 	},
 
-	getDebts: function(subtotals, split) {
-		var debts = [];
-
-		_(subtotals).each(function(subtotal) { 
-			debts.push(split - subtotal);
-		});
-
-		return debts;
-	},
-
-	getNames: function(event) {
-		var names = [];
-		var $names = $(event.currentTarget).find('input.name');
-
-		$names.each(function(k, name) {
-			names.push( $(name).val() );
-		});
-
-		return names;
-	},
-
-	getSubtotals: function(event) {
-		var subtotals = [], that = this;
-		var $subDivs = $(event.currentTarget).find('.subtotal');
-
-		$subDivs.each(function(k, subDiv) {
-			subtotals.push(that._parseSubtotal( $(subDiv).text() ));
-		});
-
-		return subtotals;
-	},
-
 	deleteBill: function(event) {
-		var $li = $(event.target).closest('li')
-		var $ul = $(event.target).closest('ul')
-		var liCount = $ul.find('li').length
+		var $li = $(event.target).closest('li');
+		var $ul = $(event.target).closest('ul');
+		var liCount = $ul.find('li').length;
 
 		if (liCount > 1) { 
 			$li.remove();
@@ -118,11 +86,11 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 	},
 
 	render: function() {
-		var content = this.template({ results: [] });
+		var amts = [ this.randAmount(), this.randAmount() ];
+		var content = this.template({ amts: amts });
 		this.$el.html(content);
 
 		// pass a null event
-		this.addPerson(null, 'sam');
 		this.addPerson(null, 'sarah');
 		this.addPerson(null, 'john');
 		return this;
@@ -166,6 +134,38 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		});
 
 		return sum / arr.length;
+	},
+
+	_getDebts: function(subtotals, split) {
+		var debts = [];
+
+		_(subtotals).each(function(subtotal) { 
+			debts.push(split - subtotal);
+		});
+
+		return debts;
+	},
+
+	_getNames: function(event) {
+		var names = [];
+		var $names = $(event.currentTarget).find('input.name');
+
+		$names.each(function(k, name) {
+			names.push( $(name).val() );
+		});
+
+		return names;
+	},
+
+	_getSubtotals: function(event) {
+		var subtotals = [], that = this;
+		var $subDivs = $(event.currentTarget).find('.subtotal');
+
+		$subDivs.each(function(k, subDiv) {
+			subtotals.push(that._parseSubtotal( $(subDiv).text() ));
+		});
+
+		return subtotals;
 	},
 
 	_parseBill: function(billInput) {
