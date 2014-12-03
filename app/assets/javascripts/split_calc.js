@@ -2,7 +2,7 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 	template: JST["splitCalc/calcForm"],
 	billTemplate: JST["splitCalc/bill"],
 	personTemplate: JST["splitCalc/person"],
-	modalTemplate: JST["splitCalc/modal"],
+	resultsTemplate: JST["splitCalc/results"],
 
 	events: {
 		'click button.add-bill': 'addBill',
@@ -15,11 +15,10 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 	},
 
 	addBill: function(event) {
-		// randomize amount here
-		var content = this.billTemplate({ amount: amount });
+		var content = this.billTemplate({ amount: this.randAmount() });
 		var $ul = $(event.target).parent().find('.amounts');
 		$ul.append(content);
-		// this.updateSubtotal();
+		this.updateSubtotal(event);
 	},
 
 	addPerson: function(name, amt) {
@@ -31,23 +30,25 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 	calculateSplit: function() {
 		var names = this.getNames(event);
 		var subtotals = this.getSubtotals(event);
-		var debts = this.getDebts(subtotals);
+		var split = this._average(subtotals);
+		var debts = this.getDebts(subtotals, split);
 		var results = [];
 
 		_(debts).each(function(debt, i) { 
+			// if (debt === split) return;
 			if (debt > 0) {
-				// if any sum to 0, use sumToZero
-				// results.push(names[i] + ' owes ' + names[j] + ' ' + debt);
-				// set both debts to 0
+
 				_(debts).each(function(innerDebt, j) {
-					if (i === j) return;
+					if (i === j || debt === 0) return;
+
+					// find first negative debt, this person owed money
 					if (innerDebt < 0) {
 						if (debt < Math.abs(innerDebt)) {
-							results.push(names[i] + ' owes ' + names[j] + ' ' + debt);
+							results.push(names[i] + ' owes ' + names[j] + ' $' + debt.toFixed(2));
 							debts[j] = innerDebt + debt;
 							debt = 0;
 						} else {
-							results.push(names[i] + ' owes ' + names[j] + ' ' + -innerDebt);
+							results.push(names[i] + ' owes ' + names[j] + ' $' + (-innerDebt).toFixed(2));
 							debt = debt + innerDebt;
 							debts[j] = 0;
 					 	}
@@ -59,9 +60,8 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		return results;
 	},
 
-	getDebts: function(subtotals) {
+	getDebts: function(subtotals, split) {
 		var debts = [];
-		var split = this._average(subtotals);
 
 		_(subtotals).each(function(subtotal) { 
 			debts.push(split - subtotal);
@@ -96,7 +96,7 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		var $li = $(event.target).closest('li')
 		var $ul = $(event.target).closest('ul')
 		var liCount = $ul.find('li').length
-		// this.updateSubtotal();
+		this.updateSubtotal(event);
 
 		if (liCount > 1) 
 			$li.remove();
@@ -109,24 +109,24 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		this.$('.person').removeClass('hoverable');
 	},
 
+	randAmount: function() {
+		return Math.ceil( Math.random() * 100 );
+	},
+
 	render: function() {
 		var content = this.template({ results: [] });
 		this.$el.html(content);
 
-		var rand1 = Math.ceil( Math.random() * 100 );
-		var rand2 = Math.ceil( Math.random() * 100 );
-		var rand3 = Math.ceil( Math.random() * 100 );
-
-		this.addPerson('sam', rand1);
-		this.addPerson('sarah', rand2);
-		this.addPerson('john', rand3);
+		this.addPerson('sam', this.randAmount());
+		this.addPerson('sarah', this.randAmount());
+		this.addPerson('john', this.randAmount());
 		return this;
 	},
 
 	renderResults: function() {
-		results = this.calculateSplit;
-		var content = this.modalTemplate({ results: results });
-		this.$el.append(content);
+		var results = this.calculateSplit();
+		var content = this.resultsTemplate({ results: results });
+		this.$('#results-holder').html(content);
 	},
 
 	setupDelete: function() {
@@ -139,18 +139,22 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		list.find('li').each(function(k, li) {
 			var billInput = $(li).find('input').val();
 			var amount = that._parseBill(billInput);
-			// debugger
 			sum = sum + amount;
 		});
 
 		return sum;
 	},
 
-	// need to adjust so that it can be called in add/del bills
 	updateSubtotal: function(event) {
-		var $ul = $(event.target).parent().parent();
-		var $person = $ul.parent();
+		var $ul, text = $(event.target).text();
+		var $parent = $(event.target).parent();
 
+		if (text === 'add a bill')
+			$ul = $parent.find('ul');
+		else 
+			$ul = $parent.parent();
+
+		var $person = $ul.parent();
 		var subtotal = this.sumBills($ul);
 		$person.find('.subtotal').text('Total: $' + subtotal.toFixed(2));
 	},
