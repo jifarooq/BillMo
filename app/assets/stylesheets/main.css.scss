@@ -58,7 +58,8 @@ $borderGray: #bbb;
 }
 
 /*form and buttons */
-input[type=submit], .pushed-button, .add-friend, .remove-friend 
+input[type=submit], .pushed-button, .add-friend, .remove-friend,
+#login, #signup
 {
 	cursor: pointer;
 	background: #139BD8;

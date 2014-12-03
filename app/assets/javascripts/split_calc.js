@@ -18,11 +18,12 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		var content = this.billTemplate({ amount: this.randAmount() });
 		var $ul = $(event.target).parent().find('.amounts');
 		$ul.append(content);
-		this.updateSubtotal(event);
+		this.updateSubtotal($ul);
 	},
 
-	addPerson: function(name, amt) {
-		// randomize name here
+	addPerson: function(event, name) {
+		amt = this.randAmount();
+		name = name || 'person' + amt;
 		var content = this.personTemplate({ name: name, amt: amt });
 		this.$('#calc-holder').append(content);
 	},
@@ -96,15 +97,18 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		var $li = $(event.target).closest('li')
 		var $ul = $(event.target).closest('ul')
 		var liCount = $ul.find('li').length
-		this.updateSubtotal(event);
 
-		if (liCount > 1) 
+		if (liCount > 1) { 
 			$li.remove();
-		else 
-			$li.find('input').val('')
+		} else {
+			$li.find('input').val('');
+		}
+
+		this.updateSubtotal($ul);
 	},
 
 	deletePerson: function(event) {
+		// add message for how to delete
 		$(event.currentTarget).remove();
 		this.$('.person').removeClass('hoverable');
 	},
@@ -117,9 +121,10 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		var content = this.template({ results: [] });
 		this.$el.html(content);
 
-		this.addPerson('sam', this.randAmount());
-		this.addPerson('sarah', this.randAmount());
-		this.addPerson('john', this.randAmount());
+		// pass a null event
+		this.addPerson(null, 'sam');
+		this.addPerson(null, 'sarah');
+		this.addPerson(null, 'john');
 		return this;
 	},
 
@@ -145,14 +150,8 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		return sum;
 	},
 
-	updateSubtotal: function(event) {
-		var $ul, text = $(event.target).text();
-		var $parent = $(event.target).parent();
-
-		if (text === 'add a bill')
-			$ul = $parent.find('ul');
-		else 
-			$ul = $parent.parent();
+	updateSubtotal: function($ul) {
+		if (!$ul) $ul = $parent.parent();			
 
 		var $person = $ul.parent();
 		var subtotal = this.sumBills($ul);
