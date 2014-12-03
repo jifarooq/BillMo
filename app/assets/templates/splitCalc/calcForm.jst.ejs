@@ -1,26 +1,25 @@
-<!-- new person create new div of class person -->
-<!-- new bill creates li of class ... -->
-
 <div id='calc-holder'>
-
 	<div class='person'>
-		<input class='person-name' name='person' value='person'>
+		<input class='name' value='justin'>
 
 		<ul class='amounts clearfix'>
 			<li>
-				<input class='amount' name='amount' value='20 for dog food'>
+				<input class='bill' value='30 for dog food'>
 				<button class='del-bill'>remove bill</button>
 			</li>
 		</ul>
 
 		<button class='add-bill'>Add a Bill</button>
-		<div class='total amount'>Total: 200</div>
+		<div class='subtotal'>Total: $30.00</div>
 	</div>
+</div><br><br>
 
-</div>
-
-<br><br>
 <div id='controls'>
 	<button class='add-person'>Add a Person</button>
 	<button class='del-person'>Delete a Person</button>
+	<div><br>
+		<button id='calc-all' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+			Who owes who?
+		</button>
+	</div>
 </div>

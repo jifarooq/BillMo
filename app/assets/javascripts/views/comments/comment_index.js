@@ -3,8 +3,7 @@ BillMo.Views.CommentsIndex = Backbone.View.extend({
 	events: {'click .delete-comment': 'destroyComment'},
 
 	initialize: function() {
-		// fine for now since won't be many comments
-		this.listenTo(this.collection, 'sync remove', this.render);
+		this.listenTo(this.collection, 'add remove', this.render);
 	},
 
 	destroyComment: function(event){

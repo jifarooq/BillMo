@@ -16,7 +16,8 @@ BillMo.Views.CommentForm = Backbone.View.extend({
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
     attrs.transaction_id = this.collection.transaction.id;
-    this.collection.create(attrs);
+    this.collection.create(attrs, { wait:true });
+    $(event.target).find('input').val('')
   },
   
   render: function(){

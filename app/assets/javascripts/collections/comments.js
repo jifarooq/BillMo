@@ -7,4 +7,8 @@ BillMo.Collections.Comments = Backbone.Collection.extend({
 	initialize: function(models, options){
 		this.transaction = options.transaction;
 	},
+
+	comparator: function(comment){
+		return comment.id;
+	},
 });

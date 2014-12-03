@@ -6,20 +6,8 @@
 	text-align: center;
 }
 
-.clearfix {
-	display: block;
-}
-
-.clearfix:after {
-	content: "";
-	clear: both;
-	display: block;
-	height: 0;
-	line-height: 0;
-	visibility: hidden;
-}
-
 .person {
+	vertical-align: text-top;
 	border-right: dashed 1px #71b0c2;
 	display: inline-block;
 	padding: 2%;
@@ -31,13 +19,37 @@
   }
 }
 
-.person-name {
+.name {
 	font-weight: bold;
 	color: #0859B9;
 }
 
-/*button {
-	text-align: center;
-	margin: 0 auto;
-}*/
+#calc-holder {
+	button {
+		background-color: lightBlue;
+		border: 1px solid lightSkyBlue;
+		border-radius: 4px;
+		font-size: 11px;
+	}
+}
+
+#controls {
+	.add-person, .del-person {
+		background-color: lightBlue;
+		border: 2px solid lightSkyBlue;
+		border-radius: 4px;
+		font-size: 13px;
+	}
+}
+
+#calc-all {
+	background: #0859B9;
+	border: 2px solid #0859B9;
+	border-radius: 5px;
+	color: white;
+	font-family: helvetica;
+	font-size: 18px;
+	height: 36px;
+}
+
 

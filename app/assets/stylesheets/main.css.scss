@@ -45,6 +45,18 @@ $borderGray: #bbb;
 	width: 400px;
 }
 
+#to {
+}
+
+.ui-menu-item {
+	/*position: fixed;*/
+	color: #0859B9;
+	background: #139BD8;
+	font-weight: bold;
+	padding: 5px;
+	z-index: 999;
+}
+
 /*form and buttons */
 input[type=submit], .pushed-button, .add-friend, .remove-friend 
 {

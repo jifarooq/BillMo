@@ -14,18 +14,18 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 	},
 
 	createTransaction: function(attrs) {
-		var user = BillMocurrentUser;
+		var user = BillMo.currentUser;
 		
 		if (this.payOn) {
 			attrs.payer_id = user.id;
 			attrs.payer = user.attributes['username'];
-			attrs.receiver_id = BillMofriends.findWhere({ username: attrs.receiver }).id;
+			attrs.receiver_id = BillMo.friends.findWhere({ username: attrs.receiver }).id;
 		} else {
 			attrs.receiver_id = user.id;
 			//by default, form 'to' is receiver, so need to flip here
 			attrs.payer = attrs.receiver; 
 			attrs.receiver = user.attributes['username'];
-			attrs.payer_id = BillMofriends.findWhere({ username: attrs.payer }).id;
+			attrs.payer_id = BillMo.friends.findWhere({ username: attrs.payer }).id;
 		}
 
 		this.collection.create(attrs, {
@@ -46,10 +46,15 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 
 	// instant search
 	renderResults: function(event) {
-		var names = friends.pluck('username');
+		var names = BillMo.friends.pluck('username');
 		$(event.target).autocomplete({ 
 			source: names,
-			position: { offset: '-20 -300' }
+			position: { 
+				// my: 'left bottom',
+				at: 'bottom',
+				of: $('#to'),
+				collision: 'flip'
+			}
 		});
 	},
 
@@ -83,7 +88,7 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 	},
 
 	updateBalance: function(amount) {
-		var user = BillMocurrentUser;
+		var user = BillMo.currentUser;
 		if (amount * 0 === 0) {
 			var curBalance = user.get('balance');
 			amount = (this.payOn ? amount : -amount);
