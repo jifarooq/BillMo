@@ -7,7 +7,7 @@
 		  <img src="<%= current_user.image_url %>">
 		  <ul class='blue-text'>
 		  	<li class ='bold'>
-		  		Hello <%= current_user.username %> &nbsp;&nbsp
+		  		<%= link_to "Hello #{current_user.username}", user_url(current_user)%>
 		  	</li>
 	  		<li><span>
 	  			<%= link_to 'Edit Profile', edit_user_url(current_user) %>

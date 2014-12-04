@@ -1,4 +1,15 @@
-<p id="show-page">User's feed may go here</p>
+<% join_date = @user.created_at %>
+<% month = join_date.strftime("%B") %>
+<% year  = join_date.strftime("%Y") %>
+<h3 id="show-page"><%= @user.username %></h3>
 
-<%= link_to 'Edit', edit_user_path(@user) %><br>
-<%= link_to 'Back', users_path %>
+<ul>
+	<li><img src="<%= @user.image_url %>"></li><br>
+	<li>Estimated balance: 
+		<span class='money'>$<%= @user.estimated_balance %>0</span>
+	</li>
+	<li><%= link_to 'Edit', edit_user_url(@user) %></li>
+	<li>Member since <%= month %> <%= year %></li><br> 
+</ul>
+
+<%= link_to 'All users', users_url %>

@@ -1,4 +1,6 @@
 class Api::FriendshipsController < ApplicationController
+	# before_action :allow_cross_domain
+
 	def create
 		@friendship = current_user.friendships.new(friendship_params)
 		@friendship.try(:save)
@@ -15,6 +17,11 @@ class Api::FriendshipsController < ApplicationController
 		@friendships = current_user.friendships
 		render json: @friendships
 	end
+
+	# def allow_cross_domain
+	# 	response.headers['Access-Control-Allow-Origin'] = true
+	# 	response.headers['Access-Control-Allow-Methods'] = 'POST, DELETE'
+	# end
 
   private
   	def friendship_params

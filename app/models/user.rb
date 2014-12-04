@@ -34,6 +34,17 @@ class User < ActiveRecord::Base
 		foreign_key: :receiver_id
 	)
 
+	def is_friend?(user)
+		self.friends.include?(user)
+	end
+
+	def estimated_balance
+		real_bal = self.balance
+		error = rand(real_bal / 10)
+		est_balance = (rand(2) == 0) ? real_bal - error : real_bal + error
+		est_balance.round(2)
+	end
+
 	def transactions
 	  Transaction.where('payer_id = ? OR receiver_id = ?', id, id)
 	end
@@ -57,10 +68,6 @@ class User < ActiveRecord::Base
 		self.token = SecureRandom::urlsafe_base64(16)
 		self.save!
 		self.token
-	end
-
-	def is_friend?(user)
-		self.friends.include?(user)
 	end
 
 	private

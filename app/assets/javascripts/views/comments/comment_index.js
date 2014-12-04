@@ -13,12 +13,9 @@ BillMo.Views.CommentsIndex = Backbone.View.extend({
 	},
 
 	render: function() {
-		// rendering twice when it's the first comment! why?
-		if (curComment !== this.collection.last()) {
 			curComment = this.collection.last();
 			var content = this.template({ comments: this.collection });
 			this.$el.html(content);
-		}
 
 		return this;
 	},

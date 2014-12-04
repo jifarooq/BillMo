@@ -49,12 +49,7 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 		var names = BillMo.friends.pluck('username');
 		$(event.target).autocomplete({ 
 			source: names,
-			position: { 
-				// my: 'left bottom',
-				at: 'bottom',
-				of: $('#to'),
-				collision: 'flip'
-			}
+			appendTo: '#ac-container'
 		});
 	},
 

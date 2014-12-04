@@ -16,18 +16,11 @@ $borderGray: #bbb;
 	border: 1px solid lightBlue;
 	border-radius: 4px;
 	width: 625px;
-	height: 150px;
+	min-height: 150px;
 	margin-bottom: 20px;
 	padding: 5px;
 	background-color: white;
 }
-
-/*.inner-pay-box {
-	width: 600px;
-	height: 140px;
-	padding: 2px;
-	/*margin: 5px;
-}*/
 
 .pay-charge-to {
 	display: block;
@@ -45,7 +38,9 @@ $borderGray: #bbb;
 	width: 400px;
 }
 
-#to {
+.box-labels {
+	font-weight: bold;
+	text-align: right;
 }
 
 .ui-menu-item {
@@ -57,9 +52,11 @@ $borderGray: #bbb;
 	z-index: 999;
 }
 
+/*.add-friend, .remove-friend,*/
+
 /*form and buttons */
-input[type=submit], .pushed-button, .add-friend, .remove-friend,
-#login, #signup, #guest
+input[type=submit], .pushed-button, #login, #signup, #guest, 
+.toggle-friendship, .submit
 {
 	cursor: pointer;
 	background: #139BD8;
@@ -68,6 +65,15 @@ input[type=submit], .pushed-button, .add-friend, .remove-friend,
 	font-family: helvetica;
 	font-size: 14px;
 	border-radius: 5px;
+}
+
+.hidden {
+	display: none;
+}
+
+.submit {
+	font-size: 16px;
+	background: darkblue;
 }
 
 button {

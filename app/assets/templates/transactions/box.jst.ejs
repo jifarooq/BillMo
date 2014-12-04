@@ -10,26 +10,43 @@
 			</div>
 
 			<div class='float-right'> 
-				<label>To:
-					<input id='to' class='text-input' name='receiver' 
-					 autocomplete='on'>
-				</label> 
+				<label for="to">To:</label> 
+				<div id="to-wrapper" style="display: inline-block;">
+					<input id='to'
+								 class='text-input'
+								 name='receiver'
+								 autocomplete='on'>
+				<div id="ac-container"></div>
+				</div>
 			</div>
-		</div> 
+		</div> <br><br>
 
-		<!-- <div class='amount-for'> -->
-			<label><br>Amount
+<!-- 			<label><br>Amount
 				<input class='text-input' name='amount' value='10'>
-			</label><br>
+			</label><br> -->
 
-			<label>For
+<!-- 			<label>For
 				<input class='text-input' name='note' value='ice cream'>
-			</label>
+			</label> -->
 
-			<input type='hidden' name='device'    value='web'>
-			<input type='hidden' name='post_date' value='just now'>
+		<table width='100%'><tbody>
+			<tr>
+				<td width='25%' class='box-labels'>Amount</td>
+				<td width='60%'>
+					<input class='text-input' name='amount' value='10'>
+				</td>
+			</tr>
+			<tr>
+				<td width='25%' class='box-labels'>For</td>
+				<td width='60%'>
+					<input class='text-input' name='note' value='ice cream'>
+				</td>
+				<td><span id='submit-trans'></span></td>
+			</tr>
+		</tbody></table>
 
-		<span id='submit-trans'></span>
+		<input type='hidden' name='device'    value='web'>
+		<input type='hidden' name='post_date' value='just now'>
 
 	</form>
 

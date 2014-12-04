@@ -1,6 +1,6 @@
 <h2>Find some Friends</h2>
 
-<table>
+<table class='friends-index'>
   <thead>
     <tr> <th>Username</th> </tr>
   </thead>
@@ -11,17 +11,13 @@
         <td><%= user.username %></td>
         <td><%= link_to 'Show', user %></td>
         <td> <%= link_to 'Edit', edit_user_path(user) %></td>
-        <td> <%= button_to 'Delete user', user, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
 
         <td> 
           <% if current_user.is_friend?(user) %>
-            <%= button_to 'Break Friendship', friendship_url(user), method: :delete  %>
+            <button class='toggle-friendship' data-id='<%= user.id %>'>Break Friendship</button>
           <% elsif current_user == user %>  
           <% else %>
-            <form action="<%= friendships_url %>" method="post">
-              <input type='hidden' name='friendship[friend_id]' value='<%=user.id%>'>
-              <input type='submit' value='Add Friend'>
-            </form> 
+            <button class='toggle-friendship' data-id='<%= user.id %>'>Add Friend</button> 
           <% end %>
         </td>
 
@@ -30,7 +26,70 @@
 
   </tbody>
 </table>
-
 <br>
 
+<button class='hidden submit'>Submit changes</button>
+
+<br>
 <%= link_to 'New User', new_user_path %>
+
+<script>
+  // var newFriends = [], defriends = [];
+  $('.toggle-friendship').on('click', toggleFriendship);
+
+  function toggleFriendship(event) {
+    event.preventDefault();
+    var target = $(event.target);
+
+    if ( target.text() === 'Break Friendship' ) {
+      defriends.push(target.data('id'));
+      target.text('Add Friend');
+    } else if ( target.text() === 'Add Friend' ) {
+      // newFriends.push(target.data('id'));
+      createFriendship( target.data('id') );
+      target.text('Break Friendship');
+    }
+
+    // $('.submit').removeClass('hidden');
+  };
+
+  // function persistChange() {
+  //   $('.toggle-friendship').each(function (button) {
+  //     if (button.data('action') === 'create') {
+  //       createFriendship(button.data('id'));
+  //     }
+  //   });
+  // };
+
+  function destroyFriendship() {
+
+  };
+
+  function createFriendship(id) {
+    $.ajax({
+      data: { 'friend_id': id }, 
+      dataType: 'jsonp',
+      type: 'POST',
+      url: ("http://localhost:3000/api/friendships"),
+      dataType: 'json',
+      success: function (resp) {
+        alert('friendship created');
+      }
+    })
+  }
+
+  $('.submit').on('click', submitFriendChanges)
+
+  //on click of submit, gen multiple rails create/delete requests
+
+  function submitFriendChanges(event) {
+    event.preventDefault();
+
+    _(newFriends).each(function(friend_id) {
+      var formContent = JST['templates/add_friend']
+      
+    });
+    debugger
+  }
+
+</script>
