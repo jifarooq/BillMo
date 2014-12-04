@@ -2,8 +2,8 @@ BillMo.Views.Friendship = Backbone.View.extend({
 	template: JST["friendship"],
 
 	events: {
-		'click .remove-friend': 'destroyFriendship',
-		'click .add-friend': 'createFriendship'
+		'click .add-friend': 'createFriendship',
+		'click .remove-friend': 'destroyFriendship'
 	},
 
 	initialize: function() {

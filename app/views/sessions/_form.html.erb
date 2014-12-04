@@ -18,12 +18,12 @@
 	<button id='guest'>Guest</button>
 
 	<script>
-		$('#guest').on('click', clickGuest);
+		$('#guest').on('click', guestLogin);
 
-		function clickGuest(event) {
+		function guestLogin(event) {
 			event.preventDefault();
 			var inputs = ['g', 'gu', 'gue', 'gues', 'guest'];
-			var ms = 400;
+			var ms = 350;
 
 			_(inputs).each(function(input, i) {
 				timeout = (i + 1) * ms;
@@ -32,7 +32,7 @@
 
 			setTimeout(function() {
 				$('.submit').trigger('click');
-			}, ms * 6);
+			}, ms * (inputs.length + 1));
 		};
 
 		function inputAnimate() {

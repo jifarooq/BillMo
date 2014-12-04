@@ -1,0 +1,45 @@
+<div class="modal fade" id="slot-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="myModalLabel">Bank error in your favor!</h3>
+      </div>
+      <div class="modal-body">
+        You just won a ton of money!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default close" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.close').on('click', makeItRain);
+
+  function makeItRain() {
+    event.preventDefault();
+    // targetBalance = Math.floor(Math.random() * Math.pow(10, 5))
+    targetBalance = 2000;
+
+    var interval = setInterval(incrementBalance, 100);
+
+    function incrementBalance() {
+      debugger
+      var view = new BillMo.Views.BalanceShow();
+
+      var curBalance = BillMo.currentUser.get('balance');
+      BillMo.currentUser.set('balance', curBalance + 100);
+
+      $(this.document).ready(function () { 
+        var $el = $(this.document).find('.money'); 
+        $el.html(view.render());
+      });
+
+      console.log(BillMo.currentUser.getBalance());
+      if (curBalance >= targetBalance) clearInterval(interval);
+    }
+  }
+</script>
+

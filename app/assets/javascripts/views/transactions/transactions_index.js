@@ -1,14 +1,16 @@
 BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
   template: JST['transactions/index'],
+  // template2: JST['transactions/balance'],
 
-  initialize: function(options) {
-    this.listenTo(BillMo.currentUser, 'sync', this.render);
+  initialize: function() {
+    // this.listenTo(BillMo.currentUser, 'sync', this.displayBalance);
   	this.listenTo(this.collection, 'add', this.addFeedItem);
     this.listenTo(this.collection, 'remove', this.removeFeedItem);
 
     // these used to be called in render.
-    this.renderFeedItems();
+    this.addBalance();
     this.addTransactionBox();
+    this.renderFeedItems();
 
     //ensure new feed items stay on refresh!
     this.listenTo(this.collection, 'sync', this.render);
@@ -26,6 +28,17 @@ BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
       collection: this.collection
     });
     this.addSubview('.outer-pay-box', transBox);
+  },
+
+  //named display to signify it's not a subview, just a template
+  // displayBalance: function() {
+  //   var content = this.template2();
+  //   this.$('.money').html(content);
+  // },
+
+  addBalance: function() {
+    var balanceView = new BillMo.Views.BalanceShow();
+    this.addSubview('.money', balanceView);
   },
 
   removeFeedItem: function(trans) {

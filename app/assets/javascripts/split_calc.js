@@ -36,7 +36,6 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		var results = [];
 
 		_(debts).each(function(debt, i) { 
-			// if (debt === split) return;
 			if (debt > 0) {
 
 				_(debts).each(function(innerDebt, j) {
