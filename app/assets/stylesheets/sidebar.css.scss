@@ -11,18 +11,18 @@ $myBlue: #057FC6;
 .money {
 	color: green;
 	font-weight: bold;
-	/*text-align: center;*/
 }
 
 .inner-sidebar {
-	width: 275px;
+	min-width: 200px;
 	height: 400px;
 }
 
 .profile {
-	border: 1px solid lightBlue;
-	border-radius: 4px;
-	width: 265px;
+/*	border: 1px solid lightBlue;
+	border-radius: 4px;*/
+	/*display: block;*/
+	min-width: 200px;
 	min-height: 140px;
 	margin-bottom: 20px;
 	margin-left: 10px;

@@ -4,7 +4,13 @@
 	<div class='inner-sidebar'>
 
 		<div class='profile'>
-			 <img src="<%= current_user.image_url %>">
+		  <img src="<%= current_user.image_url %>">
+			<span class='blue-text bold'>
+				Hello <%= current_user.username %> &nbsp;&nbsp
+			</span><br>
+			<span>
+					<%= link_to 'Edit Profile', edit_user_url(current_user) %>
+			</span>
 		</div>
 
 		<div class='friends'>
@@ -19,4 +25,12 @@
 		</div>
 	</div>
 </div>
+
+<!-- <ul class='blue-text'>
+	<li class ='bold'>
+		Hello <%= current_user.username %> &nbsp;&nbsp</li>
+		<li>
+			<%= link_to 'Edit Profile', edit_user_url(current_user) %>
+		</li>
+</ul> -->
 
