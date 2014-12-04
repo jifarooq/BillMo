@@ -6,7 +6,7 @@
 #  username        :string(255)      not null
 #  password_digest :string(255)      not null
 #  token           :string(255)      not null
-#  filepicker_url  :string(255)
+#  image_url       :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
 #  balance         :float            default(1000.0)

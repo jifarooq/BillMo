@@ -12,6 +12,11 @@
  *= require_tree .
  */
 
+@import "bootstrap-sprockets";
 @import "bootstrap";
-/*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/
+/*@import "font-awesome-sprockets";*/
+@import "font-awesome";
+
 $billMoBlue: #3c95d2;
+
+/*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/

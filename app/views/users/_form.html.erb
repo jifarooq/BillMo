@@ -9,6 +9,9 @@
   </div>
 <% end %>
 
+<% name = (@user) ? @user.username : '' %>
+<% img_url = (@user) ? @user.image_url : '' %>
+
 <form action="<%= users_url %>" method="post">
 
   <input type="hidden" 
@@ -16,13 +19,17 @@
   value="<%=form_authenticity_token%>">
 
   <label>Username<br>
-    <input type="text" name="user[username]"><br>
+    <input name="user[username]" value='<%= name %>'><br>
   </label>
 
   <label>Password<br>
     <input type="password" name="user[password]"><br>
   </label>
 
-  <input type="submit" value='Sign Up'>
+  <label>Photo Url<br>
+    <input name="user[image_url]" value='<%= img_url %>'><br>
+  </label>
+
+  <input type="submit" value='<%= submitVal %>'>
 
 </form>

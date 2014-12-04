@@ -4,21 +4,7 @@
 	<div class='inner-sidebar'>
 
 		<div class='profile'>
-			User info here
-			<button>Upload photo</button>
-
-			<script type="text/javascript">
-				// $('button').on('click', function() {
-				// 	filepicker.pickAndStore({mimetype:"image/*"},{},
-				// 		function(InkBlobs){
-				// 			console.log(JSON.stringify(InkBlobs));
-				// 		});
-				// });
-			</script>
-
-			<% if current_user.filepicker_url %>
-				<%= filepicker_image_tag current_user.filepicker_url, w: 160, h: 160, fit: 'clip' %>
-			<% end %>
+			 <img src="<%= current_user.image_url %>">
 		</div>
 
 		<div class='friends'>
