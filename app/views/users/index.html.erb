@@ -5,16 +5,29 @@
     <tr> <th>Username</th> </tr>
   </thead>
 
-	<script>
-		var view = new BillMo.Views.Friendship();
-		BillMo.users.fetch({
-			success: function() {
-				$('.friendship-toggle').html(view.render().$el);
-			}
-		});
-	</script>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td> <%= link_to 'Edit', edit_user_path(user) %></td>
+        <td> <%= button_to 'Delete user', user, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
 
-  <tbody class='friendship-toggle'>
+        <td> 
+          <% if current_user.is_friend?(user) %>
+            <%= button_to 'Break Friendship', friendship_url(user), method: :delete  %>
+          <% elsif current_user == user %>  
+          <% else %>
+            <form action="<%= friendships_url %>" method="post">
+              <input type='hidden' name='friendship[friend_id]' value='<%=user.id%>'>
+              <input type='submit' value='Add Friend'>
+            </form> 
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+
   </tbody>
 </table>
 
