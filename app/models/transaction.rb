@@ -24,10 +24,10 @@ class Transaction < ActiveRecord::Base
 
 	def rand_device
 		rand_num = rand(100)
-		return 'iphone' if rand_num.between?(0, 39)
-		return 'web' if rand_num.between?(40, 69)
-		return 'android' if rand_num.between?(70, 89)
-		return 'carrier pigeon' if rand_num.between?(90, 99)
+		return 'iphone' if rand_num.between?(0, 34)
+		return 'android' if rand_num.between?(35, 59)
+		return 'web' if rand_num.between?(60, 79)
+		return 'carrier pigeon' if rand_num.between?(80, 99)
 	end
 
 	private 

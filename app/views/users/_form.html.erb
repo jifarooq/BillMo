@@ -11,10 +11,10 @@
 
 <% name = (@user) ? @user.username : '' %>
 <% img_url = (@user) ? @user.image_url : '' %>
-<% url = (@user) ? user_url(@user) : users_url %>
+<% action_url = (@user) ? user_url(@user) : users_url %>
 <% hiddenMeth = (@user) ? 'put' : 'post' %>
 
-<form action="<%= url %>" method="post">
+<form action="<%= action_url %>" method="post">
   <input type="hidden" name="_method" value="<%= hiddenMeth %>">
 
   <input type="hidden" 

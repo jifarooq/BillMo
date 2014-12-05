@@ -67,7 +67,19 @@ COMMENTS = ["it's too cold for ice cream", "nicolas cage is so 1999",
 						"Let me take a nap",
 						"Fab. So strong",
 						"I'm tired",
-						]
+						"Verdana is a cool font",
+						"Verdana is so NOT a cool font",
+						"How did you make this? Photoshop?",
+						"Looks like Venmo's got some competition",
+						"Please don't hack in and steal all my money",
+						"Mission accomplished. I forget what it was",
+						"Nice use of red! I'm color blind by the way",
+						"Just sublime. Not your site, the text editor!",
+						"Wow that's revolutionary!",
+						"Nice use of charcoal in that photo over there",
+						"Nice work there",
+						"Hover over me to have the delete icon appear",
+						"When are you going to implement the search at the top?"]
 
 NAMES_CLONE = NAMES.clone
 
@@ -86,7 +98,7 @@ end
 User.create!(
 	username: 'guest',
 	password: 'guest',
-	balance: rand(99499) + 500,
+	balance: rand(9949) + 500,
 	image_url: 'http://placecreature.com/nicolas-cage/300/300'
 )
 
@@ -94,7 +106,7 @@ User.create!(
 User.create!(
 	username: 'justin',
 	password: 'justin',
-	balance: rand(99499) + 500,
+	balance: rand(9949) + 500,
 	image_url: 'http://placecreature.com/' + CREATURES.sample + '/300/300'
 )
 
