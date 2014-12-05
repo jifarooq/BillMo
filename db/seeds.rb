@@ -48,7 +48,7 @@ NAMES = [
 	"Andrew", "Carol"
 ]
 
-NOTES = ['ice cream', 'chocolate', 'dog food', 'shampoo', 'gas',
+NOTES = ["fresh juice from the farmer's market", 'chocolate', 'dog food', 'shampoo', 'gas',
 	'energy bill', 'hotel room', 'Vegas', 'movie', 'Netflix subscription',
 	'Christmas tree', 'iPhone 6']
 
@@ -58,6 +58,8 @@ COMMENTS = ["it's too cold for ice cream", "nicolas cage is so 1999",
 						"so much random generated content",
 						"conditioner is better than shampoo"]
 
+NAMES_CLONE = NAMES.clone
+
 def create_user(name)
 	User.create!(
 		username: name,
@@ -65,21 +67,33 @@ def create_user(name)
 		balance: rand(99499) + 500,
 		image_url: 'http://placecreature.com/' + CREATURES.sample + '/300/300'
 	)
+	NAMES_CLONE.delete(name)	#enforce unique names
 end
 
 
 #create guest
 User.create!(
-		username: 'guest',
-		password: 'guest',
-		balance: rand(99499) + 500,
-		image_url: 'http://placecreature.com/nicolas-cage/300/300'
-	)
-num_users.times { create_user(NAMES.sample) }
-guest = User.find_by_username('guest')
+	username: 'guest',
+	password: 'guest',
+	balance: rand(99499) + 500,
+	image_url: 'http://placecreature.com/nicolas-cage/300/300'
+)
 
+#create me
+User.create!(
+	username: 'justin',
+	password: 'justin',
+	balance: rand(99499) + 500,
+	image_url: 'http://placecreature.com/' + CREATURES.sample + '/300/300'
+)
+
+#create other users
+
+num_users.times { create_user(NAMES.sample) }
 
 #create guest friendships
+guest = User.find_by_username('guest')
+
 User.all.each do |user|
 	guest.friendships.create!(friend_id: user.id)
 end

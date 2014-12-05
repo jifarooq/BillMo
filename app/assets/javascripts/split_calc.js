@@ -10,6 +10,7 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		'click button.add-bill': 'addBill',
 		'click button.add-person': 'addPerson',
 		'click button.del-person': 'setupDelete',
+		'click button.fixed-amounts': 'setFixedAmounts',
 		'click button#calc-all': 'renderResults',
 		'mousedown .hoverable': 'deletePerson',
 		'blur input.bill': 'updateSubtotal',
@@ -103,6 +104,18 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		var results = this.calculateSplit();
 		var content = this.resultsTemplate({ results: results });
 		this.$('#results-holder').html(content);
+	},
+
+	setFixedAmounts: function() {
+		var $gparent = $(event.target).parent().parent();
+		var $billEntries = $gparent.find('.bill');
+		var amount = 10, that = this;
+		// debugger
+		$billEntries.each(function(k, entry) {
+			$(entry).val(amount + ' for dog food');
+			entry.updateSubtotal(event);
+			amount = amount + 10;
+		});
 	},
 
 	setupDelete: function() {

@@ -1,8 +1,10 @@
 <div>
-	<button id='signup' class="btn btn-primary btn-lg float-right" data-toggle="modal" 
-		data-target="#signup-modal">Sign Up</button>
-	<button id='login' class="btn btn-primary btn-lg float-right" data-toggle="modal" 
-		data-target="#login-modal">Log In</button>
+	<% if logged_in? %>
+		<%= link_to 'Back to BillMo', users_url %>
+	<% else %>
+		<button id='signup' class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#signup-modal">Sign Up</button>
+		<button id='login' class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#login-modal">Log In</button>
+	<% end %>
 </div>
 
 <br><br><br>
