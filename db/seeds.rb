@@ -50,7 +50,7 @@ NAMES = [
 
 NOTES = ["fresh juice from the farmer's market", 'chocolate', 'dog food', 'shampoo', 'gas',
 	'energy bill', 'hotel room', 'Vegas', 'movie', 'Netflix subscription',
-	'Christmas tree', 'gallon of coffee', 'iPhone 6', 'nameCheap domain name'
+	'Christmas tree', 'gallon of coffee', 'iPhone 6', 'nameCheap domain name',
 	'fixie bike', 'Bart clipper card', 'Anchor steam 6 pack', 'Lagunitas',
 	'headphones', 'new keyboard', 'new S key button', 'cat food', 'Eggs Benedict',
 	'that Super burrito from the Taqueria last night']
