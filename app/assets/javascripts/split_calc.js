@@ -118,8 +118,7 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 	},
 
 	updateSubtotal: function(event, $ul) {
-		debugger
-		if (!$ul) $ul = $parent.parent();			
+		if (!$ul) $ul = $(event.target).parent().parent();
 
 		var $person = $ul.parent();
 		var subtotal = this.sumBills($ul);
