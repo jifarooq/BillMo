@@ -19,12 +19,25 @@
 	    BillMo.currentUser.set('balance', curBalance + adder);
 	    var content = '<span> $' + (curBalance + adder).toFixed(2) + '</span>';
 	    $('h2 .money').html(content);
-	    if (curBalance >= targetBalance) clearInterval(interval);
+	    if (curBalance >= targetBalance) {
+        clearInterval(interval);
+        updateUserBalance(curBalance);
+      }
 	  }
   }
 
   function randNum(exp){
   	return Math.floor(Math.random() * Math.pow(10, exp)) + Math.random();
+  }
+
+  function updateUserBalance(balance) {
+    var root = window.location.origin;
+    $.ajax({
+      data: { 'balance': parseInt(balance) },
+      type: 'PATCH',
+      url: (root + '/api/user'),
+      success: function() {}
+    });
   }
 </script>
 

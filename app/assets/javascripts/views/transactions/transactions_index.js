@@ -1,8 +1,9 @@
 BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
   template: JST['transactions/index'],
+  // template: JST["transactions/balance"],
 
   initialize: function() {
-    // this.listenTo(BillMo.currentUser, 'sync', this.displayBalance);
+    // this.listenTo(BillMo.currentUser, 'sync', this.addBalance);
   	this.listenTo(this.collection, 'add', this.addFeedItem);
     this.listenTo(this.collection, 'remove', this.removeFeedItem);
 
@@ -37,7 +38,7 @@ BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
 
   addBalance: function() {
     var balanceView = new BillMo.Views.BalanceShow();
-    this.addSubview('.money', balanceView);
+    this.addSubview('h2 .money', balanceView);
   },
 
   removeFeedItem: function(trans) {

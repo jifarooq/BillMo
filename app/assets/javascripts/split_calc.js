@@ -114,7 +114,6 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 
 		$billEntries.each(function(k, entry) {
 			$(entry).val(amount + ' for dog food');
-			// debugger
 			amount = amount + 10;
 		});
 

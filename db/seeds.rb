@@ -50,13 +50,24 @@ NAMES = [
 
 NOTES = ["fresh juice from the farmer's market", 'chocolate', 'dog food', 'shampoo', 'gas',
 	'energy bill', 'hotel room', 'Vegas', 'movie', 'Netflix subscription',
-	'Christmas tree', 'iPhone 6']
+	'Christmas tree', 'gallon of coffee', 'iPhone 6', 'nameCheap domain name'
+	'fixie bike', 'Bart clipper card', 'Anchor steam 6 pack', 'Lagunitas',
+	'headphones', 'new keyboard', 'new S key button', 'cat food', 'Eggs Benedict',
+	'that Super burrito from the Taqueria last night']
 
 COMMENTS = ["it's too cold for ice cream", "nicolas cage is so 1999",
 						"why it been so rainy lately?", "no comment", 
 						"this site would be cool if real money were involved",
 						"so much random generated content",
-						"conditioner is better than shampoo"]
+						"conditioner is better than shampoo",
+						"what a tasty burrito",
+						"I'm hungry",
+						"What has the best coffee around here?",
+						"Why is the rent so damn high?",
+						"Let me take a nap",
+						"Fab. So strong",
+						"I'm tired",
+						]
 
 NAMES_CLONE = NAMES.clone
 
@@ -64,7 +75,7 @@ def create_user(name)
 	User.create!(
 		username: name,
 		password: name,
-		balance: rand(99499) + 500,
+		balance: rand(9949) + 500,
 		image_url: 'http://placecreature.com/' + CREATURES.sample + '/300/300'
 	)
 	NAMES_CLONE.delete(name)	#enforce unique names
