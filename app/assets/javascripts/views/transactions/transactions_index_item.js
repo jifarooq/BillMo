@@ -16,14 +16,14 @@ BillMo.Views.TransactionsIndexItem = Backbone.CompositeView.extend({
     var commentForm = new BillMo.Views.CommentForm({ 
       collection: this.collection
     });
-    this.addSubview('.comment', commentForm);
+    this.addSubview('.comments', commentForm);
   },
 
   addComments: function(trans) {
     var commentsView = new BillMo.Views.CommentsIndex({ 
       collection: this.collection
     });
-    this.addSubview('.comment', commentsView);
+    this.addSubview('.comments', commentsView);
   },
 
   destroyTrans: function(){

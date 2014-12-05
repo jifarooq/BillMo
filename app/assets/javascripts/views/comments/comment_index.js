@@ -1,6 +1,11 @@
 BillMo.Views.CommentsIndex = Backbone.View.extend({
 	template: JST["comments/index"],
-	events: {'click .delete-comment': 'destroyComment'},
+
+	events: {
+		'click .delete-comment': 'destroyComment',
+		'mouseenter .comment': 'showDestroyButton',
+		'mouseleave .comment': 'hideDestroyButton',
+	},
 
 	initialize: function() {
 		this.listenTo(this.collection, 'add remove', this.render);
@@ -13,10 +18,17 @@ BillMo.Views.CommentsIndex = Backbone.View.extend({
 	},
 
 	render: function() {
-			curComment = this.collection.last();
-			var content = this.template({ comments: this.collection });
-			this.$el.html(content);
-
+		var content = this.template({ comments: this.collection });
+		this.$el.html(content);
 		return this;
 	},
+
+	showDestroyButton: function() {
+		this.$('.delete-comment').removeClass('hidden');
+	},
+
+	hideDestroyButton: function() {
+		this.$('.delete-comment').addClass('hidden');
+	},
+
 });

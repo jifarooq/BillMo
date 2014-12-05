@@ -1,6 +1,5 @@
 BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
   template: JST['transactions/index'],
-  // template2: JST['transactions/balance'],
 
   initialize: function() {
     // this.listenTo(BillMo.currentUser, 'sync', this.displayBalance);
@@ -12,7 +11,7 @@ BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
     this.addTransactionBox();
     this.renderFeedItems();
 
-    //ensure new feed items stay on refresh!
+    //ensure new feed items stay on refresh
     this.listenTo(this.collection, 'sync', this.render);
   },
 

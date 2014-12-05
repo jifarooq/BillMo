@@ -61,7 +61,6 @@
       data: { 'friend_id': id }, 
       type: 'DELETE',
       url: (root + "/api/friendships/" + id),
-      dataType: 'json',
       success: function() {
         $('#' + id).remove()
       }
@@ -73,7 +72,6 @@
       data: { 'friend_id': id }, 
       type: 'POST',
       url: (root + "/api/friendships"),
-      dataType: 'json',
       success: function (resp) {
         var content = '<li class="blue-text" id=' + id + '>' + name + "</li>";
         $('.friends ul').append(content);

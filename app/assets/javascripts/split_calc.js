@@ -1,4 +1,5 @@
 BillMo.Views.SplitCalc = Backbone.View.extend({
+	
 	template: JST["splitCalc/calcForm"],
 	billTemplate: JST["splitCalc/bill"],
 	personTemplate: JST["splitCalc/person"],
@@ -21,9 +22,8 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		this.updateSubtotal(event, $ul);
 	},
 
-	addPerson: function(event, name) {
-		amt = this.randAmount();
-		name = name || 'person' + amt;
+	addPerson: function(event) {
+		var amt = this.randAmount(), name = this.randName();
 		var content = this.personTemplate({ name: name, amt: amt });
 		$(content).insertAfter(this.$('#calc-holder .first-person'));
 	},
@@ -75,7 +75,7 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 	},
 
 	deletePerson: function(event) {
-		// add message for how to delete
+		// to do: add message for how to delete
 		$(event.currentTarget).remove();
 		this.$('.person').removeClass('hoverable');
 	},
@@ -84,14 +84,18 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		return Math.ceil( Math.random() * 100 );
 	},
 
+	randName: function() {
+		return BillMo.names[ Math.floor(Math.random() * BillMo.names.length) ];
+	},
+
 	render: function() {
 		var amts = [ this.randAmount(), this.randAmount() ];
-		var content = this.template({ amts: amts });
+		var names = [ this.randName(), this.randName() ];
+		var content = this.template({ amts: amts, names: names });
 		this.$el.html(content);
 
-		// pass a null event
-		this.addPerson(null, 'sarah');
-		this.addPerson(null, 'john');
+		this.addPerson();
+		this.addPerson();
 		return this;
 	},
 
@@ -168,6 +172,8 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 	},
 
 	_parseBill: function(billInput) {
+		if (!billInput) return 0;
+
 		var pattern = /^[\d, \.]+/
 		var strAmount = billInput.match(pattern).toString().trimRight(1);
 		var amount = parseFloat(strAmount);

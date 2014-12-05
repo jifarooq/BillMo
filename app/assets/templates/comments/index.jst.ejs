@@ -1,9 +1,10 @@
 <% comments.each( function(comment) { %>
 	<div>
-		<%= comment.escape('content') %>
-		<span class="glyphicon glyphicon-remove-circle delete-comment" 
-					data-id="<%= comment.id %>"
-		      aria-hidden="true">
+		<span class='comment'><%= comment.escape('content') %>
+			<span class="glyphicon glyphicon-remove-circle delete-comment hidden" 
+						data-id="<%= comment.id %>"
+			      aria-hidden="true">
+			</span>&emsp;&emsp;&emsp;
 		</span>
 	</div>
 <% }); %>

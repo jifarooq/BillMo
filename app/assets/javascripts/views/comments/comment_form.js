@@ -3,9 +3,9 @@ BillMo.Views.CommentForm = Backbone.View.extend({
   template2: JST['submit'],
   events: {
     'keydown #add-comment': 'renderSubmitButton',
+    'focus #add-comment': 'renderSubmitButton',
     'mouseleave form': 'clearSubmitButton',
     'submit form': 'createComment'
-    //form should come back on mouseenter
   },
 
   clearSubmitButton: function() {
@@ -33,12 +33,3 @@ BillMo.Views.CommentForm = Backbone.View.extend({
   },
 
 });
-
-// 'mousedown #to': 'targetFocus',
-// targetFocus: function(event) {
-//  // toBox.addClass('hover');
-//  $(event.target).focus();
-// },
-
-// var filter = friends.where({ username: attrs.receiver });
-// attrs.receiver_id = new Backbone.Collection( filter ).at(0).id;
