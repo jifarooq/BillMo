@@ -15,11 +15,13 @@
         <td> 
           <% if current_user.is_friend?(user) %>
             <button class='toggle-friendship'
+                    data-root='<%= root_url %>'
                     data-name='<%= user.username %>' 
                     data-id='<%= user.id %>'>Break Friendship</button>
           <% elsif current_user == user %>  
           <% else %>
-            <button class='toggle-friendship' 
+            <button class='toggle-friendship'
+                    data-root='<%= root_url %>'
                     data-name='<%= user.username %>' 
                     data-id='<%= user.id %>'>Add Friend</button> 
           <% end %>
@@ -42,22 +44,23 @@
 
   function toggleFriendship(event) {
     event.preventDefault();
-    var target = $(event.target), id = target.data('id');
+    var target = $(event.target);
+    var id = target.data('id'), root = target.data('root');
 
     if ( target.text() === 'Break Friendship' ) {
-      destroyFriendship(id);
+      destroyFriendship(id, root);
       target.text('Add Friend');
     } else {
-      createFriendship(id, target.data('name') );
+      createFriendship(id, target.data('name'), root);
       target.text('Break Friendship');
     }
   };
 
-  function destroyFriendship(id) {
+  function destroyFriendship(id, root) {
     $.ajax({
       data: { 'friend_id': id }, 
       type: 'DELETE',
-      url: ("http://localhost:3000/api/friendships/" + id),
+      url: (root + "/api/friendships/" + id),
       dataType: 'json',
       success: function() {
         $('#' + id).remove()
@@ -65,11 +68,11 @@
     });
   };
 
-  function createFriendship(id, name) {
+  function createFriendship(id, name, root) {
     $.ajax({
       data: { 'friend_id': id }, 
       type: 'POST',
-      url: ("http://localhost:3000/api/friendships"),
+      url: (root + "/api/friendships"),
       dataType: 'json',
       success: function (resp) {
         var content = '<li class="blue-text" id=' + id + '>' + name + "</li>";

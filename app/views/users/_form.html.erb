@@ -25,15 +25,15 @@
     <input name="user[username]" value='<%= name %>'><br>
   </label>
 
-  <% unless @user %>
+  <% if @user %>
+    <label>Photo Url<br>
+    <input name="user[image_url]" value='<%= img_url %>'><br>
+    </label>
+  <% else %>
     <label>Password<br>
       <input type="password" name="user[password]"><br>
     </label>
   <% end %>
-
-  <label>Photo Url<br>
-    <input name="user[image_url]" value='<%= img_url %>'><br>
-  </label>
 
   <input type="submit" value='<%= submitVal %>'>
 
