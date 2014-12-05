@@ -145,7 +145,7 @@ def create_received_transaction
 	)
 end
 
-num_trans.times do 
+(num_trans / 2).times do 
 	create_paid_transaction
 	create_received_transaction
 end
@@ -160,7 +160,7 @@ def create_random_comment
 	)
 end
 
-(num_trans * 4).times do 
+(num_trans * 2).times do 
 	create_random_comment
 end
 
