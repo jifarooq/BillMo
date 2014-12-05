@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 	attr_reader :password
 
 	validates :username, :password_digest, presence: true
-	validates :password, length: { minimum: 5, allow_nil: true }
+	validates :password, length: { minimum: 4, allow_nil: true }
 	after_initialize :ensure_token
 
 	has_many :friendships
