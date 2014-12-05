@@ -10,7 +10,7 @@
 	border: none;
 }
 
-.hoverable {
+.hoverable, .del-bill {
 	&:hover {
   	background-color: lightSalmon;
   }

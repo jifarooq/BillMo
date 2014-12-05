@@ -14,24 +14,21 @@ $myBlue: #057FC6;
 }
 
 .inner-sidebar {
+	border-left: 1px solid lightBlue;
+	border-radius: 4px;
 	min-width: 200px;
 	height: 400px;
 }
 
 .profile {
-/*	border: 1px solid lightBlue;
-	border-radius: 4px;*/
-	/*display: block;*/
-	min-width: 200px;
-	min-height: 140px;
 	margin-bottom: 20px;
 	margin-left: 10px;
+	min-height: 140px;
+	min-width: 200px;
 }
 
 .friends {
-	border: 1px solid lightBlue;
-	border-radius: 4px;
-	width: 265px;
-	height: 200px;
+	min-height: 200px;
 	margin-left: 10px;
+	width: 265px;
 }

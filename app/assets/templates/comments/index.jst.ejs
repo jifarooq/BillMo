@@ -1,11 +1,10 @@
 <% comments.each( function(comment) { %>
 	<div>
 		<%= comment.escape('content') %>
-		<button class='delete-comment'data-id="<%=comment.id%>">
-			<!-- <span class='caret'></span> -->
-			Delete
-			<!-- <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
-		</button>
+		<span class="glyphicon glyphicon-remove-circle delete-comment" 
+					data-id="<%= comment.id %>"
+		      aria-hidden="true">
+		</span>
 	</div>
 <% }); %>
 

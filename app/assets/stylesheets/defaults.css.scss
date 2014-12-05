@@ -19,7 +19,7 @@ pre {
   font-size: 11px;
 }
 
-span {
+.inner-header span, .inner-sidebar span {
   &:hover {
     color: #fff;
     background-color: darkBlue;

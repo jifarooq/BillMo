@@ -5,13 +5,13 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 	resultsTemplate: JST["splitCalc/results"],
 
 	events: {
+		'click .del-bill': 'deleteBill',
 		'click button.add-bill': 'addBill',
-		'click button.del-bill': 'deleteBill',
 		'click button.add-person': 'addPerson',
 		'click button.del-person': 'setupDelete',
+		'click button#calc-all': 'renderResults',
 		'mousedown .hoverable': 'deletePerson',
 		'blur input.bill': 'updateSubtotal',
-		'click button#calc-all': 'renderResults',
 	},
 
 	addBill: function(event) {

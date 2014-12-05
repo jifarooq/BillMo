@@ -3,7 +3,7 @@
 	border: 1px solid lightBlue;
 	border-radius: 4px;
 	width: 625px;
-	height: 2000px;
+	min-height: 75px;
 	background-color: white;
 	.feed-item {
 		min-height:75px;
@@ -15,9 +15,27 @@ li {
 	list-style: none;
 }
 
-.delete-trans, .delete-comment {
+#add-comment {
+	width: 275px;
+}
+
+.delete-trans{
 	background-color: lightBlue;
 	border: 1px solid lightSkyBlue;
 	border-radius: 4px;
 	font-size: 10px;
+}
+
+.delete-comment {
+	font-size: 15px;
+	&:hover {
+		cursor: pointer;
+		background-color: lightSalmon;
+	}
+}
+
+.ui-menu-item {
+	&:hover {
+		background-color: lightSalmon;
+	}
 }

@@ -16,22 +16,19 @@
 		</div>
 
 		<div class='friends'>
-			<span class='blue-text'>Friends</span> (<%= friends.size %>)
-			<span class="blue-text">
+			<span class='blue-text bold'>Friends</span> (<%= friends.size %>)
+			<span class="blue-text bold">
 				<%= link_to 'Find Friends', users_url %>
 			</span>
-
-			<% friends.each do |friend| %>
-				<li class='blue-text'><%= friend.username %></li>
-			<% end %>
+			<ul>
+				<% friends.each do |friend| %>
+					<li id='<%= friend.id %>'
+						  class='blue-text'><%= friend.username %></li>
+				<% end %>
+			</ul>
 		</div>
+
 	</div>
 </div>
 
-<!-- can make it to the right like Venmo later -->
-<!-- <span class='blue-text bold'>
-	Hello <%= current_user.username %> &nbsp;&nbsp
-</span><br>
-<span>
-		<%= link_to 'Edit Profile', edit_user_url(current_user) %>
-</span> -->
+<!-- can make it to the right like Venmo with spans later -->

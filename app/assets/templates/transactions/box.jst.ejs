@@ -2,7 +2,7 @@
 
 <div class='inner-pay-box'>
 	<form>
-		<!-- ids and classes must go at the front -->
+
 		<div class='pay-charge-to'>
 			<div class='float-left pay-charge'>
 				<button id='pay' class='pushed-button'>Pay</button>
@@ -16,28 +16,21 @@
 								 class='text-input'
 								 name='receiver'
 								 autocomplete='on'>
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				<div id="ac-container"></div>
 				</div>
 			</div>
-		</div> <br><br>
-
-<!-- 			<label><br>Amount
-				<input class='text-input' name='amount' value='10'>
-			</label><br> -->
-
-<!-- 			<label>For
-				<input class='text-input' name='note' value='ice cream'>
-			</label> -->
+		</div> <br>
 
 		<table width='100%'><tbody>
 			<tr>
-				<td width='25%' class='box-labels'>Amount</td>
+				<td width='18%' class='box-labels'>Amount</td>
 				<td width='60%'>
 					<input class='text-input' name='amount' value='10'>
 				</td>
 			</tr>
 			<tr>
-				<td width='25%' class='box-labels'>For</td>
+				<td width='18%' class='box-labels'>For</td>
 				<td width='60%'>
 					<input class='text-input' name='note' value='ice cream'>
 				</td>
@@ -49,5 +42,22 @@
 		<input type='hidden' name='post_date' value='just now'>
 
 	</form>
-
 </div> 
+
+<!-- <tr>
+	<div class='pay-charge' style="display: inline-block;">
+		<td width='15%'>
+			<button id='pay' class='pushed-button'>Pay</button>
+			<button id='charge'>Charge</button>
+		</td>
+	</div>
+
+	<td width='20%' class='box-labels'>To:</td>
+	<td><div id="to-wrapper" style="display: inline-block;">
+		<input id='to'
+		class='text-input'
+		name='receiver'
+		autocomplete='on'>
+		<div id="ac-container"></div>
+	</div></td>
+</tr> -->
