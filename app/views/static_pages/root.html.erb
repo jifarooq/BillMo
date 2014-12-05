@@ -18,7 +18,7 @@
 	    var curBalance = BillMo.currentUser.get('balance');
 	    BillMo.currentUser.set('balance', curBalance + adder);
 	    var content = '<span> $' + (curBalance + adder).toFixed(2) + '</span>';
-	    $('.money').html(content);
+	    $('h2 .money').html(content);
 	    if (curBalance >= targetBalance) clearInterval(interval);
 	  }
   }

@@ -14,7 +14,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-/*@import "font-awesome-sprockets";*/
+@import "font-awesome-sprockets";
 @import "font-awesome";
 
 $billMoBlue: #3c95d2;
@@ -27,5 +27,3 @@ $billMoBlue: #3c95d2;
 	position: absolute;
 	width: 100%;
 }
-
-/*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/

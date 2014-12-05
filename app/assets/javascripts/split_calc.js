@@ -18,7 +18,7 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		var content = this.billTemplate({ amount: this.randAmount() });
 		var $ul = $(event.target).parent().find('.amounts');
 		$ul.append(content);
-		this.updateSubtotal($ul);
+		this.updateSubtotal(event, $ul);
 	},
 
 	addPerson: function(event, name) {
@@ -71,7 +71,7 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 			$li.find('input').val('');
 		}
 
-		this.updateSubtotal($ul);
+		this.updateSubtotal(event, $ul);
 	},
 
 	deletePerson: function(event) {
@@ -117,7 +117,8 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		return sum;
 	},
 
-	updateSubtotal: function($ul) {
+	updateSubtotal: function(event, $ul) {
+		debugger
 		if (!$ul) $ul = $parent.parent();			
 
 		var $person = $ul.parent();
