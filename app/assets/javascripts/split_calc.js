@@ -108,14 +108,17 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 
 	setFixedAmounts: function() {
 		var $gparent = $(event.target).parent().parent();
+		var $ul = $gparent.find('ul');
 		var $billEntries = $gparent.find('.bill');
-		var amount = 10, that = this;
-		// debugger
+		var amount = 10;
+
 		$billEntries.each(function(k, entry) {
 			$(entry).val(amount + ' for dog food');
-			entry.updateSubtotal(event);
+			// debugger
 			amount = amount + 10;
 		});
+
+		$('input.bill').trigger('blur');
 	},
 
 	setupDelete: function() {
