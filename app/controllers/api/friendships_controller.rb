@@ -1,6 +1,4 @@
 class Api::FriendshipsController < ApplicationController
-	# before_action :allow_cross_domain
-
 	def create
 		@friendship = current_user.friendships.new(
 			friend_id: params[:friend_id]

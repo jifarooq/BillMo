@@ -30,12 +30,6 @@ BillMo.Views.TransactionsIndex = Backbone.CompositeView.extend({
     this.addSubview('.outer-pay-box', transBox);
   },
 
-  //named display to signify it's not a subview, just a template
-  // displayBalance: function() {
-  //   var content = this.template2();
-  //   this.$('.money').html(content);
-  // },
-
   addBalance: function() {
     var balanceView = new BillMo.Views.BalanceShow();
     this.addSubview('h2 .money', balanceView);

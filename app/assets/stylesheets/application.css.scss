@@ -19,17 +19,22 @@
 
 $billMoBlue: #3c95d2;
 
-#to-wrapper {
-	position: relative;
-}
-
 #ac-container {
 	position: absolute;
 	width: 100%;
 }
 
-.ui-helper-hidden-accessible {
-	display: none;
+#jackpot-modal {
+	background-color: lightSkyBlue;
+}
+
+#to-wrapper {
+	position: relative;
+}
+
+.message {
+	font-family: verdana;
+	font-size: 16px;
 }
 
 .modal-money {
@@ -42,12 +47,6 @@ $billMoBlue: #3c95d2;
 	font-size: 20px;
 }
 
-#jackpot-modal {
-	background-color: lightSkyBlue;
-}
-
-.message {
-	/*color: darkBlue;*/
-	font-family: verdana;
-	font-size: 16px;
+.ui-helper-hidden-accessible {
+	display: none;
 }

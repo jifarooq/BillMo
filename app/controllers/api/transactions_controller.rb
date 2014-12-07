@@ -16,7 +16,6 @@ class Api::TransactionsController < ApplicationController
 
 	def show
 		@trans = current_user.transactions.find(params[:id])
-		# render :show #probably don't need this
 		render json: @trans
 	end
 

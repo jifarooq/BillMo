@@ -21,7 +21,6 @@
 	    $('h2 .money').html(content);
 	    if (curBalance >= targetBalance) {
         clearInterval(interval);
-        // updateUserBalance(curBalance);
       }
 	  }
   }
@@ -30,14 +29,5 @@
   	return Math.floor(Math.random() * Math.pow(10, exp)) + Math.random();
   }
 
-  // function updateUserBalance(balance) {
-  //   var root = window.location.origin;
-  //   $.ajax({
-  //     data: { 'balance': parseInt(balance) },
-  //     type: 'PATCH',
-  //     url: (root + '/api/user'),
-  //     success: function() {}
-  //   });
-  // }
 </script>
 

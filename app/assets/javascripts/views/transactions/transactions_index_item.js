@@ -8,8 +8,6 @@ BillMo.Views.TransactionsIndexItem = Backbone.CompositeView.extend({
 
     this.addCommentForm();
     this.addComments();
-
-    // this.listenTo(this.model, 'sync', this.addComments);
   },
 
   addCommentForm: function() {

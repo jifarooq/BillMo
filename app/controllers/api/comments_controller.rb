@@ -14,18 +14,11 @@ class Api::CommentsController < ApplicationController
 		render json: @comments
 	end
 
-	# def show
-	# 	@comment = Comment.find(params[:id])
-	# 	render json: @comment
-	# end
-
 	def destroy
 		@comment = Comment.find(params[:id])
 		@comment.destroy
 		render json: {}
 	end
-
-	#perhaps add update later
 
 	private
 		def comment_params

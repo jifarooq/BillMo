@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
-	before_action do
-		# redirect_to "/" if current_user
-	end
+	# before_action do
+	# 	redirect_to "/" if current_user
+	# end
 
 	def new
 	end

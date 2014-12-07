@@ -1,3 +1,5 @@
+// source of names: http://www.ssa.gov/oact/babynames/decades/century.html
+
 BillMo.names = [
 	"James", "Mary", 
 	"John", "Patricia", 
