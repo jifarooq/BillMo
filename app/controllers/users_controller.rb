@@ -22,7 +22,6 @@ class UsersController < ApplicationController
     if @user.save
       sign_in!(@user)
     else
-      flash[:errors] = @user.errors.full_messages
       render :new
     end
   end
@@ -33,7 +32,6 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_url(@user)
     else
-      flash[:errors] = @user.errors.full_messages
       render :edit
     end
   end

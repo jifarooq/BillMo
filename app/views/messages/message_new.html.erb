@@ -1,0 +1,38 @@
+<% if @message.errors.any? %>
+  <div id="error_explanation">
+    <h2>Message failed to send because</h2>
+    <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class='message'>
+	<h2>About the developer</h2>
+
+	<br><p>This site was created by Justin Farooq using Ruby on Rails for backend, Backbone.js for frontend, and a lot of jQuery.</p><br>
+
+	<p>Refer to these links for more info:</p>
+	<ul>
+		<!-- <li> <a href='http://jifarooq.blogspot.com/'>Blog</a> </li> -->
+		<li> <a href='https://github.com/jifarooq/'>GitHub</a> </li>
+		<li> <a href='https://www.linkedin.com/in/jfarooq/'>LinkedIn</a> </li>
+		<li> <a href='https://twitter.com/JiFarooq/'>Twitter</a> </li>
+	</ul><br>
+
+	<p>If you have any comments, questions, or other feedback, feel free to leave a message below!</p>
+
+	<form action='<%= messages_url %>' method='post'>
+		<label>Message
+			<textarea name='message[body]' rows='3' cols='50'></textarea>
+		</label><br>
+
+		<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name
+			<input name='message[name]'>
+		</label> (optional)<br><br>
+
+		<input type='submit' value='Send Message'>
+	</form>
+</div>

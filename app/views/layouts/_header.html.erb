@@ -29,7 +29,10 @@
 						</span>
 
 						<span class="float-right">Account</span>
-						<span class="float-right">Help</span>
+						<span class="float-right">
+							<%= link_to 'About', new_messages_url %>
+						</span>
+						
 						<span class="float-right">
 							<%= link_to current_user.username, user_url(current_user) %>
 						</span>

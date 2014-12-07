@@ -1,13 +1,7 @@
 Backbone.CompositeView = Backbone.View.extend({
   // only use addSubview at first
-  addSubview: function (selector, subview) {
-    // beware: changed from push to unshift to render news-feed in order!
-    
-    // if (selector === '.comment') {
-    //   this.subviews(selector).push(subview);
-    // } else {
-      this.subviews(selector).unshift(subview);
-    // }
+  addSubview: function (selector, subview) {    
+    this.subviews(selector).unshift(subview);
 
     // Try to attach the subview. Render it as a convenience.
     this.attachSubview(selector, subview.render());
@@ -56,10 +50,8 @@ Backbone.CompositeView = Backbone.View.extend({
   },
 
   removeSubview: function (selector, subview) {
-    // remove from browser?
     subview.remove();
 
-    // remove from subviews array
     var subviews = this.subviews(selector);
     subviews.splice(subviews.indexOf(subview), 1);
   },

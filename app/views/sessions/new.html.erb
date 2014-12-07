@@ -2,19 +2,18 @@
 	<% if logged_in? %>
 		<%= link_to 'Back to BillMo', users_url %>
 	<% else %>
-<!-- 		<span class='header'>Welcome to 
-			<span>BILLMO</span>, a clone of Venmo with a bill splitter.
-		</span> -->
-
 		<h3 class='header'>Welcome to 
 			<span class='app-title2'>BILLMO</span>
 
-			<button id='signup' class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#signup-modal">Sign Up</button>
-			<button id='login' class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#login-modal">Log In</button>
+			<button id='signup' class="btn btn-primary btn-lg float-right" 
+							data-toggle="modal" 
+							data-target="#signup-modal">Sign Up</button>
+			<button id='login' class="btn btn-primary btn-lg float-right" 
+							data-toggle="modal" 
+							data-target="#login-modal">Log In</button>
 
 			<div>A clone of Venmo with a bill splitter</div>
 		</h3>
-
 	<% end %>
 </div>
 

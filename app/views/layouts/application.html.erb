@@ -4,11 +4,6 @@
   <title>BillMo</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application"%>
-  <!-- <script type="text/javascript"
-	  src="//api.filepicker.io/v1/filepicker.js">-->
-  <!-- </script> -->
-<!-- 	  // filepicker.setKey("AdhgDZAzTRCCd2oD0PsA9z");
- -->
   <%= csrf_meta_tags %>
 </head> 
 <body>
@@ -17,6 +12,17 @@
 	<%= render partial: 'layouts/header' %>
 	<%= render partial: 'layouts/sidebar' %>
 <% end %>
+
+<span id='message-success' class='blue-text' 
+      style='font-weight: bold; font-size: 20px;'>
+	<%= flash[:notice] if flash[:notice] %>
+</span>
+
+<script>
+	setTimeout(function(){
+		$('#message-success').remove();	
+	}, 2000);
+</script>
 
 <%= yield %>
 

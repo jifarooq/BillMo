@@ -1,5 +1,5 @@
 BillMo.Models.CurrentUser = Backbone.Model.extend({
-	// for user singular resource, just need url, not urlRoot
+	// using url--not urlRoot--since it's a singular resource
 	url: 'api/user',
 
 	getBalance: function() {
@@ -8,7 +8,6 @@ BillMo.Models.CurrentUser = Backbone.Model.extend({
 	},
 
 	isFriend: function(user) {
-		// debugger
 		return !!BillMo.friends.get(user.id);
 	}
 });

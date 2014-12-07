@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 		if user
 			sign_in!(user)
 		else
-			flash[:errors] = ['invalid username or password']
+			flash[:errors] = [true]
 			render :new_fail
 		end
 	end

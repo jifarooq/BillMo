@@ -12,14 +12,14 @@
 <% name = (@user) ? @user.username : '' %>
 <% img_url = (@user) ? @user.image_url : '' %>
 <% action_url = (@user) ? user_url(@user) : users_url %>
-<% hiddenMeth = (@user) ? 'put' : 'post' %>
+<% hiddenMethod = (@user) ? 'put' : 'post' %>
 
 <form action="<%= action_url %>" method="post">
-  <input type="hidden" name="_method" value="<%= hiddenMeth %>">
+  <input type="hidden" name="_method" value="<%= hiddenMethod %>">
 
   <input type="hidden" 
-  name="authenticity_token" 
-  value="<%=form_authenticity_token%>">
+         name="authenticity_token" 
+         value="<%=form_authenticity_token%>">
 
   <label>Username<br>
     <input name="user[username]" value='<%= name %>'><br>
