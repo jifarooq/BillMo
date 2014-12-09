@@ -6,7 +6,7 @@ BillMo::Application.routes.draw do
   resource :messages, only: [:new, :create]
 
   namespace :api, defaults: { format: :json} do
-    resources :friends, only: :index
+    resources :friends, only: [:index, :update]
     resources :friendships, only: [:index, :create, :destroy]
 
     resources :users, only: :index

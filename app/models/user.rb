@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
 		self.friends.include?(user)
 	end
 
+	# previously used on user show page.  Not used anymore so that one can see
+	# friend's balance updates appropriately after transaction 
 	def estimated_balance
 		real_bal = self.balance
 		error = rand(real_bal / 10)

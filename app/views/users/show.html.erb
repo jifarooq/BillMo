@@ -7,7 +7,7 @@
 <ul>
 	<li><img src="<%= @user.image_url %>"></li><br>
 	<li>Estimated balance: 
-		<span class='money'>$<%= @user.estimated_balance %>0</span>
+		<span class='money'>$<%= @user.balance %>0</span>
 	</li>
 	<li><%= link_to 'Edit', edit_user_url(@user) %></li>
 	<li>Member since <%= month %> <%= year %></li><br> 

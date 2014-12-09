@@ -79,10 +79,26 @@ BillMo.Views.TransactionsBox = Backbone.View.extend({
 		event.preventDefault();
 		var attrs = $(event.target).serializeJSON();
 		this.createTransaction(attrs);
-		this.updateBalance(attrs.amount);
+		this.updateUserBalance(attrs.amount);
+		this.updateFriendBalance(attrs);
 	},
 
-	updateBalance: function(amount) {
+	updateFriendBalance: function(attrs) {
+		if (attrs.amount * 0 !== 0) return;
+		var amount = parseFloat(attrs.amount);
+
+		if (this.payOn) {
+			var friend = BillMo.friends.get(attrs.receiver_id);
+			var curBalance = friend.get('balance');
+			friend.save('balance', curBalance + amount);
+		} else {
+			var friend = BillMo.friends.get(attrs.payer_id);
+			var curBalance = friend.get('balance');
+			friend.save('balance', curBalance - amount);
+		}
+	},
+
+	updateUserBalance: function(amount) {
 		var user = BillMo.currentUser;
 		if (amount * 0 === 0) {
 			var curBalance = user.get('balance');
