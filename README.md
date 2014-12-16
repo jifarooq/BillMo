@@ -1,5 +1,5 @@
 #BillMo
-A clone of Venmo with a bill split calculator before logging in.
+A clone of Venmo with a bill split calculator before logging in
 
 ####See it <a href='http://www.thebillmo.com/'>live</a>
 
