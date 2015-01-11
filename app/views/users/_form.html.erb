@@ -9,10 +9,10 @@
   </div>
 <% end %>
 
-<% name = (@user) ? @user.username : '' %>
-<% img_url = (@user) ? @user.image_url : '' %>
-<% action_url = (@user) ? user_url(@user) : users_url %>
-<% hiddenMethod = (@user) ? 'put' : 'post' %>
+<% name = (@user && @user.id) ? @user.username : '' %>
+<% img_url = (@user && @user.id) ? @user.image_url : '' %>
+<% action_url = (@user && @user.id) ? user_url(@user) : users_url %>
+<% hiddenMethod = (@user && @user.id) ? 'put' : 'post' %>
 
 <form action="<%= action_url %>" method="post">
   <input type="hidden" name="_method" value="<%= hiddenMethod %>">
@@ -25,7 +25,7 @@
     <input name="user[username]" value='<%= name %>'><br>
   </label>
 
-  <% if @user %>
+  <% if @user && @user.id %>
     <label>Photo Url<br>
     <input name="user[image_url]" value='<%= img_url %>'><br>
     </label>
