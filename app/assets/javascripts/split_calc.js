@@ -102,6 +102,7 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 
 	renderResults: function() {
 		var results = this.calculateSplit();
+		
 		var content = this.resultsTemplate({ results: results });
 		this.$('#results-holder').html(content);
 	},
