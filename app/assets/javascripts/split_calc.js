@@ -100,11 +100,25 @@ BillMo.Views.SplitCalc = Backbone.View.extend({
 		return this;
 	},
 
+	// animate printing results
 	renderResults: function() {
 		var results = this.calculateSplit();
-		
 		var content = this.resultsTemplate({ results: results });
 		this.$('#results-holder').html(content);
+
+		var len = results.length, timeout = 400;
+
+		this.$('.split-results').removeClass('hidden');		
+		this.$('.split-results #result-0').removeClass('hidden');
+
+		for (var i = 1; i < len; i++) {
+			setTimeout(_showResult.bind(i), timeout * i);
+		}
+
+		function _showResult() {
+			var $selector = $('.split-results #result-' + this);
+			$selector.removeClass('hidden');	
+		}
 	},
 
 	setFixedAmounts: function() {

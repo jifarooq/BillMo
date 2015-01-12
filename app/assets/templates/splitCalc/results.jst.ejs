@@ -1,7 +1,12 @@
 <br><br>
-<div class='split-results'>
+<div class='split-results hidden'>
 	<% var count = 0; %>
+
 	<% _(results).each(function(result) { %>
-		<li><%= result %></li>
+		<li id="result-<%= count %>" class='hidden'>
+			<%= result %>
+		</li>
+		<% count++ %>
 	<% }); %>
+
 </div>
