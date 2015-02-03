@@ -1,4 +1,4 @@
-<div class='welcome' >
+<div id='welcome'>
 	<% if logged_in? %>
 		<%= link_to 'Back to BillMo', users_url %>
 	<% else %>
@@ -15,10 +15,10 @@
 			<div id='typing'>A clone of Venmo with a bill splitter</div>
 		</h3>
 	<% end %>
-</div>
 
-<br><br>
-<div id='split-calc'></div>
+	<br><br>
+	<div id='split-calc'></div>
+</div>
 
 <script>
 	var view = new BillMo.Views.SplitCalc();
